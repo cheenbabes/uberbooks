@@ -1,12 +1,12 @@
 # uberbooks
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 1.0.0.
+Track your sales in real time all over the world
+
+## Implementation
+Built using AngularJS, Firebase, AngularFire, and yo angularfire generator.
 
 ## Build & development
 
 Run `grunt` for building and `grunt serve` for preview.
 
-## Testing
 
-Running `grunt test` will run the unit tests with karma.
