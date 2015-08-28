@@ -7,9 +7,11 @@
  * Manages score input.
  */
 angular.module('uberbooksApp')
-.controller('ScoresCtrl', function($scope, user, Auth, Ref, $firebaseObject, $firebaseArray){
+.controller('ScoresCtrl', function($scope, user, Auth, Ref, $firebaseObject, $firebaseArray, FBURL){
     
     $scope.profile = $firebaseObject(Ref.child('users/'+user.uid));
+    
+    $scope.user = user;
     
     
     //get the last 10 scores
@@ -24,7 +26,8 @@ angular.module('uberbooksApp')
                 books: $scope.score.books,
                 timestamp: Firebase.ServerValue.TIMESTAMP,
                 user: $scope.profile.name,
-                email: $scope.profile.email                
+                email: $scope.profile.email ? $scope.profile.email : null ,
+                userid: user.uid
             });
             $scope.score.money ="";
             $scope.score.books = "";
@@ -35,6 +38,7 @@ angular.module('uberbooksApp')
     //logout now
     $scope.logout = function() { Auth.$unauth(); };
     
+    var scoresRef = new Firebase(FBURL + '/scores');
     
-    
+    $scope.userScores = $firebaseArray(scoresRef.orderByChild('userid').equalTo(user.uid));
 });
