@@ -9,6 +9,15 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootcards/dist/css/bootcards-desktop.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+<!--
+    <link rel="stylesheet" href="bower_components/bootcards/dist/css/bootcards-desktop.min.css" />
+    <link rel="stylesheet" href="bower_components/bootcards/dist/css/bootcards-android.css" />
+    <link rel="stylesheet" href="bower_components/bootcards/dist/css/bootcards-android.min.css" />
+    <link rel="stylesheet" href="bower_components/bootcards/dist/css/bootcards-ios.css" />
+    <link rel="stylesheet" href="bower_components/bootcards/dist/css/bootcards-ios.min.css" />
+-->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -23,7 +32,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header" ng-cloak="">
+<!--    <div class="header" ng-cloak="">-->
         <div class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -44,7 +53,7 @@
                         <li><a href="#/">Home</a>
                         </li>
                         <!-- //angularfire -->
-                        <li><a ng-href="#/chat">Chat</a>
+                        <li><a ng-show-auth="" ng-href="#/chat">Chat</a>
                         </li>
                         <li>
                             <a ng-hide-auth="" href="#/login">Log in</a>
@@ -56,7 +65,7 @@
                 </div>
             </div>
         </div>
-    </div>
+<!--    </div>-->
 
     <div class="container">
         <div ng-view=""></div>
@@ -96,6 +105,10 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angularjs-geolocation/src/geolocation.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/bootcards/dist/js/bootcards.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -113,6 +126,7 @@
     <script src="scripts/directives/ngHideAuth.js"></script>
     <script src="scripts\routes.js"></script>
     <script src="scripts/controllers/scores.js"></script>
+    <script src="scripts/factory/factory.js"></script>
     <!-- endbuild -->
 </body>
 

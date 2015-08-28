@@ -62,7 +62,7 @@ angular.module('uberbooksApp')
             controller: 'MainCtrl'
         })
 
-    .when('/chat', {
+        .whenAuthenticated('/chat', {
             templateUrl: 'views/chat.html',
             controller: 'ChatCtrl'
         })

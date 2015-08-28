@@ -1,29 +1,25 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<h4>Welcome. See the latest scores here!</h4>
+
+
+<div class="bootcards-list">
+    <div class="panel panel-default">
+        <div class="list-group">
+            <div ng-repeat="score in scores">
+                <a class="list-group-item" href="#">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <i class="fa fa-3x fa-building-o pull-left"></i>
+                            <h4 class="list-group-item-heading">{{score.user}}</h4>
+                            <p class="list-group-item-text">{{score.lat}}, {{score.lon}}</p>
+                            <mydate>{{score.timestamp | date:'yyyy-MM-dd HH:mm:ss Z'}}</mydate>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="list-group-item-text">{{score.books}} books</p>
+                            <p class="list-group-item-text">${{score.money}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div class="row marketing">
-  <h4>Firebase</h4>
-  <p>
-    Firebase is a powerful API to store and sync data in realtime.
-  </p>
-
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
