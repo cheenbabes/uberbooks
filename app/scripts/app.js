@@ -17,5 +17,6 @@ angular.module('uberbooksApp', [
     'ngTouch',
     'firebase',
     'firebase.ref',
-    'firebase.auth'
+    'firebase.auth',
+    'geolocation'
   ]);
