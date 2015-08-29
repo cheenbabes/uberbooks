@@ -78,6 +78,10 @@ angular.module('uberbooksApp')
             templateUrl: 'views/scores.html',
             controller: 'ScoresCtrl'
         })
+        .whenAuthenticated('/score/:scoreId',{
+            templateUrl: 'views/singlescore.html',
+            controller: 'SingleScoreCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });

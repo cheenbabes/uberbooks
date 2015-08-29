@@ -4,8 +4,8 @@
 <div class="bootcards-list">
     <div class="panel panel-default">
         <div class="list-group">
-            <div ng-repeat="score in scores">
-                <a class="list-group-item" href="#">
+            <div ng-repeat="score in scores | reverse">
+                <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                     <div class="row">
                         <div class="col-sm-6">
                             <i class="fa fa-3x fa-building-o pull-left"></i>
