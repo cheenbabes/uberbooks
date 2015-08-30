@@ -7,7 +7,9 @@
 </form>
 
 <ul id="messages" ng-show="messages.length">
-  <li ng-repeat="message in messages | reverse">{{message.text}}</li>
+  <li ng-repeat="message in messages | reverse">
+      <i>{{message.user}}</i>: {{message.text}}
+    </li>
 </ul>
 
 <p class="alert alert-danger" ng-show="err">{{err}}</p>

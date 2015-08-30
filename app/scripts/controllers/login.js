@@ -7,7 +7,7 @@
  * Manages authentication to any active providers.
  */
 angular.module('uberbooksApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, Flash) {
     $scope.passwordLogin = function(email, pass) {
       $scope.err = null;
       Auth.$authWithPassword({email: email, password: pass}, {rememberMe: true}).then(
@@ -63,12 +63,14 @@ angular.module('uberbooksApp')
   
 
     function redirect() {
+      Flash.create('success', "Thank you for logging in!");    
       $location.path('/account');
     }
 
     function showError(err) {
 //        if(Object.keys(err).length != 0){
-            $scope.err = err;
+        Flash.create('danger', "There was an error. Please try again.");    
+        $scope.err = err;
 //        }
       
     }

@@ -1,6 +1,8 @@
 
 <h2>Login Page</h2>
 
+<div flash-message="5000"></div>
+
 <form role="form">
   <p class="form-group">
     <label for="loginEmail">email</label>
@@ -22,5 +24,5 @@
     <button  class="btn btn-default" ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
   </p>
 </form>
-<p ng-show="err" class="bg-danger">{{err}}</p>
+
 
