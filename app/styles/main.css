@@ -1,7 +1,11 @@
 /*Map styles*/
 .angular-google-map-container { height: 400px; }
 
-
+/*
+.list-group{
+    margin-bottom: 8px !important
+}
+*/
 
 .browsehappy {
   margin: 0.2em 0;

@@ -14,6 +14,7 @@ angular.module('uberbooksApp')
     $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(10));
     
     
+    //$scope.
 
     
     
