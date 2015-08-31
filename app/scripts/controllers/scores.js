@@ -7,7 +7,7 @@
  * Manages score input.
  */
 angular.module('uberbooksApp')
-    .controller('ScoresCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $firebaseArray, FBURL, geolocation) {
+    .controller('ScoresCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $firebaseArray, FBURL, geolocation, Flash) {
 
         //grab location
         geolocation.getLocation().then(function (data) {
@@ -39,6 +39,7 @@ angular.module('uberbooksApp')
             });
             $scope.score.money = '';
             $scope.score.books = '';
+            Flash.create('success', 'Thank you for submitting your score!'); 
 
         };
 

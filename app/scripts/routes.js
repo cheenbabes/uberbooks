@@ -82,6 +82,10 @@ angular.module('uberbooksApp')
             templateUrl: 'views/singlescore.html',
             controller: 'SingleScoreCtrl'
         })
+        .when('/map', {
+          templateUrl: 'views/map.html',
+          controller: 'MapCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });

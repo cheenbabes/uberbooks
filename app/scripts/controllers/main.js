@@ -9,32 +9,10 @@
  */
 angular.module('uberbooksApp')
     .controller('MainCtrl', function ($scope, geolocation, $firebaseArray, Ref) {
-    //grab the last 25 scores
-    
-    $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(10));
-    
-    
-    //$scope.
+        //grab the last 50 scores
+        //eventually this will be paginated to 10 scores a page
 
-    
-    
-    
-//          MOVE THIS ALL OVER TO MAP CTRL    
-//        //grab location
-//        geolocation.getLocation().then(function (data) {
-//            $scope.coords = {
-//                lat: data.coords.latitude,
-//                lon: data.coords.longitude
-//            };
-//        });
-//
-//        $scope.map = {
-//            center: {
-//                latitude: 40,
-//                longitude: -105
-//            },
-//            zoom: 8
-//        };
+        $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(50));
 
 
     });

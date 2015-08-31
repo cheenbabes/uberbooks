@@ -7,6 +7,22 @@
 }
 */
 
+/*
+html, body, container #map {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+*/
+
+#map {
+/*    position: relative;*/
+
+    height:420px;
+    width:600px;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
