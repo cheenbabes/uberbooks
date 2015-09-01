@@ -1,18 +1,57 @@
 <h4>Welcome. See the latest scores here!</h4>
 
+<div class="panel panel-primary bootcards-summary">
+  <div class="panel-heading">
+    <h4 class="panel-title text-center">Statistics</h4>
+  </div>
+  <div class="panel-body">
+      <div class="row">
+          <h3>In the last 24 hours...</h3>
+      </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-4">
+        <div class="bootcards-summary-item" href="#">
+          <i class="fa fa-3x fa-money"></i>
+          <h4>$ {{totalMoney}}</h4>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-4">
+        <div class="bootcards-summary-item" href="#">
+          <i class="fa fa-3x fa-book"></i>
+          <h4>{{totalBooks}} Books</h4>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-4">
+        <div class="bootcards-summary-item" href="#">
+          <i class="fa fa-3x fa-users"></i>
+          <h4>3 Devotees</h4>
+        </div>
+      </div> 
+    </div>
+  </div>
+<!--
+  <div class="panel-footer">
+    <small>Built with Bootcards - Summary Card</small>
+  </div>
+-->
+</div>
+
 
 
 <div class="bootcards-list">
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title text-center"> Latest scores </h4>
+        </div>
         <div class="list-group">
-            <div ng-repeat="score in scores | reverse">
+            <div ng-repeat="score in timescores | reverse">
                 <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                     <div class="row">
                         <div class="col-sm-6">
                             <i class="fa fa-3x fa-building-o pull-left"></i>
                             <h4 class="list-group-item-heading">{{score.user}}</h4>
                             <p class="list-group-item-text">{{score.lat}}, {{score.lon}}</p>
-                            <mydate>{{score.timestamp | date:'yyyy-MM-dd HH:mm:ss Z'}}</mydate>
+                            <mydate>{{score.time | date:'yyyy-MM-dd HH:mm:ss Z'}}</mydate>
                         </div>
                         <div class="col-sm-6">
                             <p class="list-group-item-text">{{score.books}} books</p>
@@ -24,6 +63,9 @@
         </div>
     </div>
 </div>
+
+Time scores: <pre>{{timescores | json}}</pre>
+All scores: <pre>{{scores | json}}</pre>
 <!--
 <div ng-repeat="score in scores | reverse">
     <span ng-class-odd="'list-group-item-info'" ng-class-even="''">

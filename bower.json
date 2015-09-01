@@ -15,7 +15,8 @@
     "angularjs-geolocation": "0.1.1",
     "bootstrap": "^3.2.0",
     "firebase": "2.2.2",
-    "angular-flash-alert": "1.1.1"  
+    "angular-flash-alert": "1.1.1",
+    "lodash":"3.10.1"  
   },
   "devDependencies": {
     "mockfirebase": "0.11.0",

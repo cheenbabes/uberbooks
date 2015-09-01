@@ -10,7 +10,7 @@
 angular.module('uberbooksApp')
     .controller('MapCtrl', function ($scope, $firebaseArray, $firebaseObject, geolocation, Ref, Flash) {
         //get the last 50 scores
-        $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(50));
+
 
         //grab location...async ugh
         geolocation.getLocation().then(function (data) {
@@ -41,25 +41,23 @@ angular.module('uberbooksApp')
                 icon: image
             });
 
+            $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(50));
+            $scope.scores.$loaded().then(function (x) {
+                var scoreMarker;
+                for (var i = 0; i < x.length; i++) {
+                    scoreMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(x[i].lat, x[i].lon),
+                        map: $scope.map
+                    });
+                }
+            }).catch(function (error) {
+                console.log("Error: ", error);
+                Flash.create('danger', "Looks like there was an error");
+            });
 
         });
 
 
-        //get the last 50 scores
-        $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(50));
-
-
-        $scope.scores.$loaded().then(function (x) {
-        var scoreMarker;
-        for (var i = 0; i < x.length; i++) {
-            scoreMarker = new google.maps.Marker({
-                position: new google.maps.LatLng(x[i].lat, x[i].lon),
-                map: $scope.map
-            });
-        }
-        }).catch(function (error) {
-            console.log("Error: ", error);
-        })
 
 
     });

@@ -14,7 +14,6 @@ angular.module('uberbooksApp')
     
     scores.$loaded().then(function(x){
         $scope.score = x.$getRecord($routeParams.scoreId);
-        console.log(post);
     }).catch(function(error){
         console.log("Error: ", error);
     })
