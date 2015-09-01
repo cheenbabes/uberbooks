@@ -6,7 +6,13 @@
   </div>
   <div class="panel-body">
       <div class="row">
-          <h3>In the last 24 hours...</h3>
+          <div class="col-md-3"><button class="btn btn-primary">24 hours</button></div>
+                    <div class="col-md-3"><button class="btn btn-primary">24 hours</button></div>
+
+                    <div class="col-md-3"><button class="btn btn-primary">24 hours</button></div>
+
+                    <div class="col-md-3"><button class="btn btn-primary">24 hours</button></div>
+
       </div>
     <div class="row">
       <div class="col-xs-6 col-sm-4">
@@ -44,7 +50,7 @@
             <h4 class="panel-title text-center"> Latest scores </h4>
         </div>
         <div class="list-group">
-            <div ng-repeat="score in timescores | reverse">
+            <div ng-repeat="score in scores | reverse">
                 <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                     <div class="row">
                         <div class="col-sm-6">

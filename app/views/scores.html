@@ -1,4 +1,15 @@
 <div>
+    <pre>Profile: {{profile | json}}</pre>
+    <pre>Coords: {{coords | json}}</pre>
+    <pre>User: {{user | json}}</pre>
+    <pre>Scores: {{scores | json}}</pre>
+    <pre>User scores: {{userScores | json}}</pre>
+
+</div>
+
+
+
+<div>
     <h2>Submitting as:</h2>
     <p>Username: {{profile.name}}</p>
     <p>Email: {{profile.email}}</p>
@@ -9,37 +20,23 @@
 
 <form class="form-horizontal">
     <fieldset>
-
-        <!-- Form Name -->
         <legend>Submit Your Score</legend>
-
-        <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="money">Amount ($)</label>
             <div class="col-md-8">
                 <input id="money" name="money" type="text" placeholder="Enter the total $ collected" class="form-control input-md" required="" ng-model="score.money">
             </div>
         </div>
-
-        <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="numberbooks">Number of Books</label>
             <div class="col-md-8">
                 <input id="numberbooks" name="numberbooks" type="text" placeholder="Total number of books " class="form-control input-md" required="" ng-model="score.books">
             </div>
         </div>
-        
         <div class="form-group">
             <button class="btn btn-default" type="submit" ng-click=addScore()>Submit</button>
         </div>
-        
-
     </fieldset>
 </form>
 
-<div>
-<b>TOTAL SCORES: {{scores.length}}</b><br>Scores here: {{scores}}
-    
-<br>    
-My user ({{user.uid}}) scores:  {{userScores}}  
-</div>
+
