@@ -46,7 +46,14 @@ angular.module('uberbooksApp')
                     $scope.totalBooks = x.reduce(function (i, score) {
                         return i + parseInt(score.books);
                     }, 0);
-
+                    
+                    var uniqueDevotees= [];
+                    for(var i =0; i < $scope.timescores.length; i ++){
+                        if($.inArray($scope.timescores[i].userid, uniqueDevotees) === -1){
+                            uniqueDevotees.push($scope.timescores[i].userid);
+                           }
+                    }
+                    $scope.devoteeCount = uniqueDevotees.length;
 
                 }).catch(function (error) {
                     console.log("Error: ", error);
