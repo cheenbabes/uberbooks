@@ -1,6 +1,17 @@
-<pre>{{coords | json}}</pre>
+<div map-lazy-load="http://maps.google.com/maps/api/js">
+    <map center="{{coords.lat}}, {{coords.lon}}" zoom="13">
+        <marker ng-repeat="score in scores" position="{{score.lat}}, {{score.lon}}" on-click="showInfoWindow(event, score)"></marker>
+    </map>
+</div>
+<br>
 
-<div id="map"></div>
+
+<pre>{{coords | json}}</pre>
+<pre>{{data | json}}</pre>
+<!--
+
+<div id=" map "></div>
+-->
 
 
 <pre>{{scores | json}}</pre>

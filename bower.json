@@ -17,7 +17,9 @@
         "firebase": "2.2.2",
         "angular-flash-alert": "1.1.1",
         "lodash": "3.10.1",
-        "ngGeolocation": ">=0.0.2"
+        "ngGeolocation": ">=0.0.2",
+        "ngmap": "1.13.4"
+
     },
     "devDependencies": {
         "mockfirebase": "0.11.0",
