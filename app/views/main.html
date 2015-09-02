@@ -1,41 +1,45 @@
 <h4>Welcome. See the latest scores here!</h4>
 
 <div class="panel panel-primary bootcards-summary">
-  <div class="panel-heading">
-    <h4 class="panel-title text-center">Statistics</h4>
-  </div>
-  <div class="panel-body">
-      <div class="row">
-          <div class="col-md-3"><button class="btn btn-primary">24 hours</button></div>
-                    <div class="col-md-3"><button class="btn btn-primary">24 hours</button></div>
-
-                    <div class="col-md-3"><button class="btn btn-primary">24 hours</button></div>
-
-                    <div class="col-md-3"><button class="btn btn-primary">24 hours</button></div>
-
-      </div>
-    <div class="row">
-      <div class="col-xs-6 col-sm-4">
-        <div class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-money"></i>
-          <h4>$ {{totalMoney}}</h4>
-        </div>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <div class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-book"></i>
-          <h4>{{totalBooks}} Books</h4>
-        </div>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <div class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-users"></i>
-          <h4>3 Devotees</h4>
-        </div>
-      </div> 
+    <div class="panel-heading">
+        <h4 class="panel-title text-center">Statistics</h4>
     </div>
-  </div>
-<!--
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-block" ng-click="updateStatsLength(86400000, '24 hours')">24 hours</button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-block" ng-click="updateStatsLength(259200000, '3 days')">3 days</button>
+            </div>
+
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-block" ng-click="updateStatsLength(604800000, '1 week')">1 week</button>
+            </div>
+        </div>
+        <h3>Showing stats for {{statisticTime}}, time length = {{statsTimeLength}}</h3>
+        <div class="row">
+            <div class="col-xs-6 col-sm-4">
+                <div class="bootcards-summary-item" href="#">
+                    <i class="fa fa-3x fa-money"></i>
+                    <h4>$ {{totalMoney}}</h4>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <div class="bootcards-summary-item" href="#">
+                    <i class="fa fa-3x fa-book"></i>
+                    <h4>{{totalBooks}} Books</h4>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <div class="bootcards-summary-item" href="#">
+                    <i class="fa fa-3x fa-users"></i>
+                    <h4>3 Devotees</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
   <div class="panel-footer">
     <small>Built with Bootcards - Summary Card</small>
   </div>
@@ -70,8 +74,7 @@
     </div>
 </div>
 
-Time scores: <pre>{{timescores | json}}</pre>
-All scores: <pre>{{scores | json}}</pre>
+Time scores: <pre>{{timescores | json}}</pre> All scores: <pre>{{scores | json}}</pre>
 <!--
 <div ng-repeat="score in scores | reverse">
     <span ng-class-odd="'list-group-item-info'" ng-class-even="''">

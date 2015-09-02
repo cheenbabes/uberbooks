@@ -20,5 +20,6 @@ angular.module('uberbooksApp', [
     'firebase.auth',
     'geolocation',
     'uiGmapgoogle-maps',
-    'flash'
+    'flash',
+    'ngGeolocation'
   ]);

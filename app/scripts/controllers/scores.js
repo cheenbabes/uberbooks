@@ -7,7 +7,15 @@
  * Manages score input.
  */
 angular.module('uberbooksApp')
-    .controller('ScoresCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $firebaseArray, FBURL, geolocation, Flash) {
+    .controller('ScoresCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $firebaseArray, FBURL, geolocation, Flash, $geolocation) {
+//
+//    $geolocation.getCurrentPosition({
+//        timeout:60000
+//    }).then(function(position){
+//        $scope.coords = position.coords;
+//    });
+    
+    
 
     $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(50));
     

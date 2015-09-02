@@ -1,27 +1,28 @@
 {
-  "name": "uberbooks",
-  "version": "0.0.0",
-  "dependencies": {
-    "angular": "^1.3.0",
-    "angular-animate": "^1.3.0",
-    "angular-cookies": "^1.3.0",
-    "angular-flash-alert": "~1.1.1",
-    "angular-google-maps": "^2.1",
-    "angular-resource": "^1.3.0",
-    "angular-route": "^1.3.0",
-    "angular-sanitize": "^1.3.0",
-    "angular-touch": "^1.3.0",
-    "angularfire": "1.0.0",
-    "angularjs-geolocation": "0.1.1",
-    "bootstrap": "^3.2.0",
-    "firebase": "2.2.2",
-    "angular-flash-alert": "1.1.1",
-    "lodash":"3.10.1"  
-  },
-  "devDependencies": {
-    "mockfirebase": "0.11.0",
-    "angular-mocks": "^1.3.0"
-  },
-  "appPath": "app",
-  "moduleName": "uberbooksApp"
+    "name": "uberbooks",
+    "version": "0.0.0",
+    "dependencies": {
+        "angular": "^1.3.0",
+        "angular-animate": "^1.3.0",
+        "angular-cookies": "^1.3.0",
+        "angular-flash-alert": "~1.1.1",
+        "angular-google-maps": "^2.1",
+        "angular-resource": "^1.3.0",
+        "angular-route": "^1.3.0",
+        "angular-sanitize": "^1.3.0",
+        "angular-touch": "^1.3.0",
+        "angularfire": "1.0.0",
+        "angularjs-geolocation": "0.1.1",
+        "bootstrap": "^3.2.0",
+        "firebase": "2.2.2",
+        "angular-flash-alert": "1.1.1",
+        "lodash": "3.10.1",
+        "ngGeolocation": ">=0.0.2"
+    },
+    "devDependencies": {
+        "mockfirebase": "0.11.0",
+        "angular-mocks": "^1.3.0"
+    },
+    "appPath": "app",
+    "moduleName": "uberbooksApp"
 }
