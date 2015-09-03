@@ -1,3 +1,79 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">Your information</h3>
+                <a class="btn btn-danger pull-right" href="#" ng-click="logout()">
+                    <i class="fa fa-sign-out"></i> Log out
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-default pull-right" href="#/account">
+                    <i class="fa fa-pencil"></i> Edit
+                </a>
+            </div>
+            <div class="list-group">
+                <div class="list-group-item">
+                    <p class="list-group-item-text">Name</p>
+                    <h4 class="list-group-item-heading">{{profile.name}}</h4>
+                </div>
+                <div class="list-group-item">
+                    <p class="list-group-item-text">Email</p>
+                    <h4 class="list-group-item-heading">{{profile.email}}</h4>
+                </div>
+                <div class="list-group-item">
+                    <p class="list-group-item-text">Temple</p>
+                    <h4 class="list-group-item-heading">{{profile.temple}}</h4>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <small>Your score will be submitted with this information.</small>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">Submit Your Score</h3>
+                <!--
+                <div class="btn-group pull-right">
+                    <button class="btn btn-success">
+                        <i class="fa fa-check"></i> Submit
+                    </button>
+                </div>
+-->
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">Amount ($)</label>
+                        <div class="col-xs-9">
+                            <input id="money" name="money" type="text" placeholder="Enter the total $ collected" class="form-control input-md" required="" ng-model="score.money">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">Books</label>
+                        <div class="col-xs-9">
+                            <input id="numberbooks" name="numberbooks" type="text" placeholder="Total number of books " class="form-control input-md" required="" ng-model="score.books">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label"></label>
+                        <div class="col-xs-9">
+                            <button class="btn btn-success" ng-click="addScore()">
+                                <i class="fa fa-check"></i> Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <small>Your score will appear on the front page and in your profile.</small>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div>
     <pre>Profile: {{profile | json}}</pre>
     <pre>Coords: {{coords | json}}</pre>
@@ -6,44 +82,3 @@
     <pre>User scores: {{userScores | json}}</pre>
 
 </div>
-
-
-
-<div>
-    <h2>Submitting as:</h2>
-    <p>Username: {{profile.name}}</p>
-    <p>Email: {{profile.email}}</p>
-    Not you?
-    <button role="button" ng-click="logout()" class="btn btn-danger">Log Out</button>
-</div>
-<br>
-
-<form class="form-horizontal">
-    <fieldset>
-        <legend>Submit Your Score</legend>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="money">Amount ($)</label>
-            <div class="col-md-8">
-                <input id="money" name="money" type="text" placeholder="Enter the total $ collected" class="form-control input-md" required="" ng-model="score.money">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="numberbooks">Number of Books</label>
-            <div class="col-md-8">
-                <input id="numberbooks" name="numberbooks" type="text" placeholder="Total number of books " class="form-control input-md" required="" ng-model="score.books">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="singlebutton"></label>
-            <div class="col-md-4">
-                <button id="singlebutton" ng-click=addScore() class="btn btn-default">Submit</button>
-            </div>
-        </div>
-
-        <!--
-        <div class="form-group">
-            <button class="btn btn-default" type="submit" ng-click=addScore()>Submit</button>
-        </div>
--->
-    </fieldset>
-</form>
