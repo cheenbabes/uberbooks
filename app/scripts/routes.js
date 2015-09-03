@@ -62,7 +62,7 @@ angular.module('uberbooksApp')
             controller: 'MainCtrl'
         })
 
-        .whenAuthenticated('/chat', {
+    .whenAuthenticated('/chat', {
             templateUrl: 'views/chat.html',
             controller: 'ChatCtrl'
         })
@@ -78,13 +78,17 @@ angular.module('uberbooksApp')
             templateUrl: 'views/scores.html',
             controller: 'ScoresCtrl'
         })
-        .whenAuthenticated('/score/:scoreId',{
+        .whenAuthenticated('/score/:scoreId', {
             templateUrl: 'views/singlescore.html',
             controller: 'SingleScoreCtrl'
         })
         .when('/map', {
-          templateUrl: 'views/map.html',
-          controller: 'MapCtrl'
+            templateUrl: 'views/map.html',
+            controller: 'MapCtrl'
+        })
+        .when('/user/:userId', {
+            templateUrl: 'views/user.html',
+            controller: 'UserCtrl'
         })
         .otherwise({
             redirectTo: '/'
