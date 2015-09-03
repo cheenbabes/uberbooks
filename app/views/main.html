@@ -1,6 +1,6 @@
 <h4>Welcome. See the latest scores here!</h4>
 
-<div class="panel panel-primary bootcards-summary">
+<div class="panel panel-default bootcards-summary">
     <div class="panel-heading">
         <h4 class="panel-title text-center">Statistics</h4>
     </div>
@@ -39,50 +39,72 @@
             </div>
         </div>
     </div>
-    <!--
-  <div class="panel-footer">
-    <small>Built with Bootcards - Summary Card</small>
-  </div>
--->
+
+    <div class="panel-footer">
+        <small>Statistics will not update instantly after a new score and may require a page refresh. Please allow 1-2 minutes for calculation.</small>
+    </div>
+
 </div>
 
 
+<div class="row">
+    <div class="col-md-6">
+        <div class="bootcards-list">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title text-center"> Latest scores </h4>
+                </div>
+                <div class="list-group">
+                    <div ng-repeat="score in scores | reverse">
+                        <a class="list-group-item" ng-href="#/score/{{score.$id}}">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <i class="fa fa-3x fa-bullseye pull-left"></i>
+                                    <h4 class="list-group-item-heading">{{score.user}}</h4>
+                                    <p class="list-group-item-text">{{score.timestamp | date: 'H:mm a MMM dd, yyyy'}}</p>
 
-<div class="bootcards-list">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h4 class="panel-title text-center"> Latest scores </h4>
-        </div>
-        <div class="list-group">
-            <div ng-repeat="score in scores | reverse">
-                <a class="list-group-item" ng-href="#/score/{{score.$id}}">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <i class="fa fa-3x fa-building-o pull-left"></i>
-                            <h4 class="list-group-item-heading">{{score.user}}</h4>
-                            <p class="list-group-item-text">{{score.lat}}, {{score.lon}}</p>
-                            <mydate>{{score.time | date:'yyyy-MM-dd HH:mm:ss Z'}}</mydate>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="list-group-item-text">{{score.books}} books</p>
-                            <p class="list-group-item-text">${{score.money}}</p>
-                        </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h4 class="list-group-item-heading">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></h4>
+                                    <h4 class="list-group-item-heading">${{score.money}}</h4>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                </div>
+                <div class="panel-footer">
+                    <small>Click on any of the scores to see details.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="bootcards-list">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title text-center"> Overall Leaders </h4>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item" href="#">
+                        <img src="/images/Sofia Acey.jpg" class="img-rounded pull-left" />
+                        <h4 class="list-group-item-heading">Acey, Sofia</h4>
+                        <p class="list-group-item-text">Masung Corp.</p>
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <img src="/images/Joseph Barish.jpg" class="img-rounded pull-left" />
+                        <h4 class="list-group-item-heading">Barish, Joseph</h4>
+                        <p class="list-group-item-text">Masung Corp.</p>
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <img src="/images/Sarah Benson.jpg" class="img-rounded pull-left" />
+                        <h4 class="list-group-item-heading">Benson, Sarah</h4>
+                        <p class="list-group-item-text">ZetaComm</p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+
 Time scores: <pre>{{timescores | json}}</pre> All scores: <pre>{{scores | json}}</pre>
-<!--
-<div ng-repeat="score in scores | reverse">
-    <span ng-class-odd="'list-group-item-info'" ng-class-even="''">
-        <div class="list-group">
-                <a href="#/score/{{score.$id}}" class="list-group-item">
-                    <span class="badge"><i class="glyphicon glyphicon-menu-right"></i></span>
-                        <h3 class="item-group-item-heading">${{score.money}}</h3> 
-                </a>
-        </div>
-    </span>
-</div>-->
