@@ -16,4 +16,12 @@ angular.module('uberbooksApp')
         var queryScores = Ref.child('scores').orderByChild('userid').equalTo($routeParams.userId);
         $scope.userScores = $firebaseArray(queryScores);
 
+        $scope.locationArray = $scope.userScores.map(function (score) {
+            var coords = {
+                lat: parseInt(score.lat),
+                lon: parseInt(score.lon)
+            }
+            return coords;
+
+        })
     });

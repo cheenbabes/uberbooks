@@ -54,8 +54,21 @@
                 <div class="panel-heading">
                     <h4 class="panel-title text-center"> Latest scores </h4>
                 </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-xs-11">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search Scores..." ng-model="search">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
                 <div class="list-group">
-                    <div ng-repeat="score in scores | reverse">
+                    <div ng-repeat="score in scores | reverse | filter: search">
                         <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                             <div class="row">
                                 <div class="col-sm-6">
