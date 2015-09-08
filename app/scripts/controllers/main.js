@@ -12,9 +12,9 @@ angular.module('uberbooksApp')
         //scores used for rankings. These will be for the last week.
         var currentTime = (new Date).getTime() + 150000;
         var oneWeekPrevious = currentTime - 604800000; //one week, 168 hours
-        $scope.rankings = $firebaseArray(Ref.child('rankings'));
-        //        $scope.specificScore = $firebaseArray(Ref.child('scores').orderByChild('userid').equalTo("simplelogin:5"));
 
+        //grab the rankings and have firebase sort them
+        $scope.rankings = $firebaseArray(Ref.child('rankings'));
 
         var scoreRankQuery = Ref.child('scores').orderByChild('timestamp').startAt(oneWeekPrevious).endAt(currentTime);
         scoreRankQuery.on('value', function snapshot() {

@@ -41,7 +41,7 @@
     </div>
 
     <div class="panel-footer">
-        <small>Statistics will not update instantly after a new score and may require a page refresh. Please allow 1-2 minutes for calculation.</small>
+        <small>Statistics and rankings will update automatically. You do not need to refresh the page.</small>
     </div>
 
 </div>
@@ -95,24 +95,65 @@
         <div class="bootcards-list">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title text-center"> Overall Leaders </h4>
+                    <h4 class="panel-title text-center"> Lakshmi Leaders </h4>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-xs-11">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchMoney">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="list-group">
-                    <a class="list-group-item" href="#">
-                        <img src="/images/Sofia Acey.jpg" class="img-rounded pull-left" />
-                        <h4 class="list-group-item-heading">Acey, Sofia</h4>
-                        <p class="list-group-item-text">Masung Corp.</p>
-                    </a>
-                    <a class="list-group-item" href="#">
-                        <img src="/images/Joseph Barish.jpg" class="img-rounded pull-left" />
-                        <h4 class="list-group-item-heading">Barish, Joseph</h4>
-                        <p class="list-group-item-text">Masung Corp.</p>
-                    </a>
-                    <a class="list-group-item" href="#">
-                        <img src="/images/Sarah Benson.jpg" class="img-rounded pull-left" />
-                        <h4 class="list-group-item-heading">Benson, Sarah</h4>
-                        <p class="list-group-item-text">ZetaComm</p>
-                    </a>
+                    <div ng-repeat="rank in rankings|filter: searchMoney|limitTo:4|orderBy: '-money'">
+                        <a class="list-group-item" href="#">
+                            <h4 class="list-group-item-heading">{{rank.name}}</h4>
+                            <p class="list-group-item-text">${{rank.money}}</p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="bootcards-list">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title text-center"> Book Leaders </h4>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-xs-11">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchBooks">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="list-group">
+                    <div ng-repeat="rank in rankings | filter: searchBooks | limitTo:4 | orderBy: '-books'">
+                        <a class="list-group-item" ng-href="#">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!--<i class="fa fa-3x fa-bullseye pull-left"></i>-->
+                                    <h4 class="list-group-item-heading">{{rank.name}}</h4>
+                                    <p class="list-group-item-text">{{rank.books}} books</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <small></small>
                 </div>
             </div>
         </div>
