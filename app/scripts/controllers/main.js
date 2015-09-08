@@ -8,11 +8,13 @@
  * Controller of the uberbooksApp
  */
 angular.module('uberbooksApp')
-    .controller('MainCtrl', function ($scope, geolocation, $firebaseArray, Ref, FBURL, Flash) {
+    .controller('MainCtrl', function ($scope, geolocation, $firebaseArray, Ref, FBURL, Flash, $firebaseObject) {
         //scores used for rankings. These will be for the last week.
         var currentTime = (new Date).getTime() + 150000;
-        var oneWeekPrevious = currentTime - 604800000; //one week
-        $scope.rankings = Ref.child('rankings').orderByChild('userid');
+        var oneWeekPrevious = currentTime - 604800000; //one week, 168 hours
+        $scope.rankings = $firebaseArray(Ref.child('rankings'));
+        //        $scope.specificScore = $firebaseArray(Ref.child('scores').orderByChild('userid').equalTo("simplelogin:5"));
+
 
         var scoreRankQuery = Ref.child('scores').orderByChild('timestamp').startAt(oneWeekPrevious).endAt(currentTime);
         scoreRankQuery.on('value', function snapshot() {
@@ -22,11 +24,38 @@ angular.module('uberbooksApp')
                     return [arrayItem.userid];
                 });
 
+                for (var j = 0; j < $scope.result.length; j++) {
+                    var user = $scope.result[j][0].userid; //all the records for a particular person have the same userid, so get the first one.  
+                    var rankingsRef = Ref.child('rankings');
+                    rankingsRef.child(user).once('value', function (snapshot) {
+                        var exists = (snapshot.val() !== null);
+                        if (exists) { //no object exists so go ahead and write a new one with $add
+                            $scope.rankings.$add({
+                                user: {
+                                    money: $scope.result[j].reduce(function (i, score) {
+                                        return i + parseInt(score.money);
+                                    }, 0),
+                                    books: $scope.result[j].reduce(function (i, score) {
+                                        return i + parseInt(score.books);
+                                    }, 0)
+                                }
+                            });
+
+                        } else { //the object is there, use $save to never write duplicates
+                            snapshot.val().money = $scope.result[j].reduce(function (i, score) {
+                                return i + parseInt(score.money);
+                            }, 0);
+                            snapshot.val().books = $scope.result[j].reduce(function (i, score) {
+                                return i + parseInt(score.books);
+                            }, 0);
+                            object.$save();
+                        }
+                    });
+                }
             }).catch(function (error) {
                 $scope.error = error;
             });
         });
-
 
         function groupBy(array, f) {
             var groups = {};
@@ -41,7 +70,11 @@ angular.module('uberbooksApp')
         }
 
 
-
+        function reduceArray(array, field) {
+            array.reduce(function (i, x) {
+                return i + parseInt(x.field);
+            }, 0);
+        }
 
 
 
@@ -97,4 +130,5 @@ angular.module('uberbooksApp')
                 });
             });
         }
+
     });
