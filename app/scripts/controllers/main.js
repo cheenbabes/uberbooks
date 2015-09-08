@@ -25,31 +25,31 @@ angular.module('uberbooksApp')
                 });
 
                 for (var j = 0; j < $scope.result.length; j++) {
-                    var user = $scope.result[j][0].userid; //all the records for a particular person have the same userid, so get the first one.  
-                    var rankingsRef = Ref.child('rankings');
-                    rankingsRef.child(user).once('value', function (snapshot) {
-                        var exists = (snapshot.val() !== null);
-                        if (exists) { //no object exists so go ahead and write a new one with $add
-                            $scope.rankings.$add({
-                                user: {
-                                    money: $scope.result[j].reduce(function (i, score) {
-                                        return i + parseInt(score.money);
-                                    }, 0),
-                                    books: $scope.result[j].reduce(function (i, score) {
-                                        return i + parseInt(score.books);
-                                    }, 0)
-                                }
-                            });
-
-                        } else { //the object is there, use $save to never write duplicates
-                            snapshot.val().money = $scope.result[j].reduce(function (i, score) {
-                                return i + parseInt(score.money);
-                            }, 0);
-                            snapshot.val().books = $scope.result[j].reduce(function (i, score) {
-                                return i + parseInt(score.books);
-                            }, 0);
-                            object.$save();
+                    //all the records for a particular person have the same userid, so get the first one.  
+                    //This would be something like "simplelogin:10"
+                    var uid = $scope.result[j][0].userid;
+                    var name = $scope.result[j][0].user;
+                    var user = {
+                        name: name,
+                        id: uid,
+                        money: $scope.result[j].reduce(function (i, score) {
+                            return i + parseInt(score.money);
+                        }, 0),
+                        books: $scope.result[j].reduce(function (i, score) {
+                            return i + parseInt(score.books);
+                        }, 0)
+                    }
+                    console.log(user);
+                    Ref.child('rankings').child(uid).once('value', function (snapshot) {
+                        //if data exists
+                        if (snapshot.exists()) {
+                            snapshot.ref().update(user);
+                        } else {
+                            var payload = {};
+                            payload[uid] = user;
+                            snapshot.ref().parent().update(payload);
                         }
+
                     });
                 }
             }).catch(function (error) {
@@ -75,7 +75,6 @@ angular.module('uberbooksApp')
                 return i + parseInt(x.field);
             }, 0);
         }
-
 
 
         //grab the last 50 scores
@@ -105,7 +104,7 @@ angular.module('uberbooksApp')
             var query = Ref.child('scores').orderByChild('timestamp').startAt(startTime).endAt(endTime);
 
             query.on('value', function (snapshot) {
-                console.log(snapshot.val());
+                //                console.log(snapshot.val());
                 $scope.timescores = $firebaseArray(query);
 
 
