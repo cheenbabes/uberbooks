@@ -1,5 +1,18 @@
 <p>This is the user view.</p>
 
+<map center="current-location" zoom="13" styles="{{style}}" style="height: 700px;">
+    <shape id="polygon" name="polygon" paths="{{pageHullPoints}}" stroke-color="#000" stroke-opacity="0.8" stroke-weight="2" fill-color="#000" fill-opacity="0.35"></shape>
+    <marker ng-repeat="score in oneWeekScores" position="{{score.lat}}, {{score.lon}}" on-click="showInfoWindow(event, score)"></marker>
+</map>
+
+<hr>
+
+<pre>Polygon Area: {{polygonArea}} m<sup>2</sup></pre>
+
+<pre>HullPoints = {{hullPoints}}</pre>
+
+<pre>One Week Score coords: {{oneWeekScoresCoords | json}}</pre>
+
 <pre>User one week scores: {{oneWeekScores | json}}</pre>
 
 <pre>location array: {{locationArray | json}}</pre>
