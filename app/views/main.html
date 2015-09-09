@@ -110,10 +110,42 @@
                     </form>
                 </div>
                 <div class="list-group">
-                    <div ng-repeat="rank in rankings|filter: searchMoney|limitTo:4|orderBy: '-money'">
-                        <a class="list-group-item" href="#">
+                    <div ng-repeat="rank in rankings|filter: searchMoney|limitTo:5|orderBy: '-money'">
+                        <a class="list-group-item" href="#/user/{{rank.id}}">
                             <h4 class="list-group-item-heading">{{rank.name}}</h4>
                             <p class="list-group-item-text">${{rank.money}}</p>
+                            <p class="list-group-item-text">{{$index +1}}</p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="bootcards-list">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title text-center"> Map Area Leaders </h4>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-xs-11">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchMap">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="list-group">
+                    <div ng-repeat="rank in rankings|filter: searchMap|limitTo:5|orderBy: '-mapArea'">
+                        <a class="list-group-item" href="#/user/{{rank.id}}">
+                            <h4 class="list-group-item-heading">{{rank.name}}</h4>
+                            <p class="list-group-item-text">{{rank.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup>
+                            </p>
                             <p class="list-group-item-text">{{$index +1}}</p>
                         </a>
                     </div>
@@ -141,8 +173,8 @@
                     </form>
                 </div>
                 <div class="list-group">
-                    <div ng-repeat="rank in rankings | filter: searchBooks | limitTo:4 | orderBy: '-books'">
-                        <a class="list-group-item" ng-href="#">
+                    <div ng-repeat="rank in rankings | filter: searchBooks | limitTo:5 | orderBy: '-books'">
+                        <a class="list-group-item" ng-href="#/user/{{rank.id}}">
                             <div class="row">
                                 <div class="col-sm-6">
 

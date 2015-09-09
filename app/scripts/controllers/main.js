@@ -37,7 +37,8 @@ angular.module('uberbooksApp')
                         }, 0),
                         books: $scope.result[j].reduce(function (i, score) {
                             return i + parseInt(score.books);
-                        }, 0)
+                        }, 0),
+                        mapArea: calculatePolygonArea($scope.result[j])
                     }
                     console.log(user);
                     Ref.child('rankings').child(uid).once('value', function (snapshot) {
@@ -74,6 +75,24 @@ angular.module('uberbooksApp')
             array.reduce(function (i, x) {
                 return i + parseInt(x.field);
             }, 0);
+        }
+
+        function calculatePolygonArea(array) {
+            var convexHull = new ConvexHullGrahamScan();
+            array.forEach(function (item) {
+                convexHull.addPoint(item.lon, item.lat);
+            });
+
+            var hullPoints = convexHull.getHull();
+            var googlePolygonPoints = hullPoints.map(function (item) {
+                return new google.maps.LatLng(item.y, item.x);
+            });
+
+            var polygon = new google.maps.Polygon({
+                paths: googlePolygonPoints
+            })
+
+            return google.maps.geometry.spherical.computeArea(polygon.getPath());
         }
 
 
