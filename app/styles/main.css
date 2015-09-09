@@ -17,6 +17,10 @@ html, body, container #map {
 }
 */
 
+.calendar-text {
+    margin-right: .3em;
+}
+
 #map {
     /*    position: relative;*/
     

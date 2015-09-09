@@ -16,12 +16,19 @@ angular.module('uberbooksApp')
         var queryScores = Ref.child('scores').orderByChild('userid').equalTo($routeParams.userId);
         $scope.userScores = $firebaseArray(queryScores);
 
-        $scope.locationArray = $scope.userScores.map(function (score) {
-            var coords = {
-                lat: parseInt(score.lat),
-                lon: parseInt(score.lon)
-            }
-            return coords;
+        $scope.userScores.$loaded().then(function (x) {
+            var currentTime = (new Date).getTime() + 150000;
+            var oneWeekPrevious = currentTime - 604800000; //one week
+            $scope.oneWeekScores = []
+            for (var i = 0; i < x.length; i++) {
+                if (x[i].timestamp >= oneWeekPrevious && x[i].timestamp <= currentTime) {
+                    $scope.oneWeekScores.push(x[i]);
+                }
 
-        })
+            }
+
+        }).catch(function (error) {
+            $scope.error = error
+        });
+
     });
