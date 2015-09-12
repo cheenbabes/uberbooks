@@ -26,35 +26,42 @@ angular.module('uberbooksApp')
                 }
             };
 
-            //put all the scores coords in an array
-            $scope.oneWeekScoresCoords = []
-            for (var j = 0; j < $scope.oneWeekScores.length; j++) {
-                $scope.oneWeekScoresCoords.push([$scope.oneWeekScores[j].lat, $scope.oneWeekScores[j].lon]);
-            }
-
-            var convexHull = new ConvexHullGrahamScan();
-            $scope.oneWeekScoresCoords.forEach(function (item) {
-                convexHull.addPoint(item[1], item[0]);
-            });
-
-            $scope.hullPoints = convexHull.getHull();
-            $scope.pageHullPoints = $scope.hullPoints.map(function (item) {
-                return [item.y, item.x];
-            })
-
-            $scope.googlePolygonPoints = $scope.hullPoints.map(function (item) {
-                return new google.maps.LatLng(item.y, item.x);
-            })
-
-            var polygon = new google.maps.Polygon({
-                paths: $scope.googlePolygonPoints
-            });
-
-            $scope.polygonArea = google.maps.geometry.spherical.computeArea(polygon.getPath());
+            $scope.polygonArea = calculatePolygonArea($scope.oneWeekScores);
 
 
         }).catch(function (error) {
             $scope.error = error
         });
+
+        var userId = $routeParams.userId;
+        $scope.ranking = $firebaseObject(Ref.child('rankings').orderByChild('id').equalTo($routeParams.userId));
+        $scope.ranking.$loaded().then(function (x) {
+            $scope.ranking = x[userId];
+        })
+
+
+
+
+        function calculatePolygonArea(array) {
+            var convexHull = new ConvexHullGrahamScan();
+            array.forEach(function (item) {
+                convexHull.addPoint(item.lon, item.lat);
+            });
+
+            $scope.pageHullPoints = convexHull.getHull();
+            var googlePolygonPoints = $scope.pageHullPoints.map(function (item) {
+                return new google.maps.LatLng(item.y, item.x);
+            });
+
+            $scope.pageHullPoints = $scope.pageHullPoints.map(function (item) {
+                return [item.y, item.x];
+            })
+
+            var polygon = new google.maps.Polygon({
+                paths: googlePolygonPoints
+            })
+
+            return google.maps.geometry.spherical.computeArea(polygon.getPath());
+        }
 
     });

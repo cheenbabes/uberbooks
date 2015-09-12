@@ -1,5 +1,3 @@
-<p>This is the user view.</p>
-
 <map center="current-location" zoom="13" styles="{{style}}" style="height: 700px;">
     <shape id="polygon" name="polygon" paths="{{pageHullPoints}}" stroke-color="#000" stroke-opacity="0.8" stroke-weight="2" fill-color="#000" fill-opacity="0.35"></shape>
     <marker ng-repeat="score in oneWeekScores" position="{{score.lat}}, {{score.lon}}" on-click="showInfoWindow(event, score)"></marker>
@@ -7,11 +5,84 @@
 
 <hr>
 
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">Rankings & Scores</h3>
+            </div>
+            <div class="list-group">
+                <div class="list-group-item">
+                    <p class="list-group-item-text">Lakshmi</p>
+                    <a ng-href="#/user/{{profile.$id}}"><h4 class="list-group-item-heading">${{ranking.money}}</h4></a>
+                </div>
+                <div class="list-group-item">
+                    <p class="list-group-item-text">Books</p>
+                    <h4 class="list-group-item-heading">{{ranking.books}} books</h4>
+                </div>
+                <div class="list-group-item">
+                    <p class="list-group-item-text">Map Area</p>
+                    <h4 class="list-group-item-heading">{{ranking.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup></h4>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <small><b>Scores are for the last seven days ONLY </b></small>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <div class="bootcards-list">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title text-center"> Latest scores </h4>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-xs-11">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search Scores..." ng-model="search">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="list-group">
+                    <div ng-repeat="score in oneWeekScores | reverse | filter: search">
+                        <a class="list-group-item" ng-href="#/score/{{score.$id}}">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <i class="fa fa-3x fa-bullseye pull-left"></i>
+                                    <h4 class="list-group-item-heading">{{score.user}}</h4>
+                                    <p class="list-group-item-text">{{score.timestamp | date: 'H:mm a MMM dd, yyyy'}}</p>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <h4 class="list-group-item-heading">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></h4>
+                                    <h4 class="list-group-item-heading">${{score.money}}</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <small>Click on any of the scores to see details.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+<pre>Ranking: {{ranking | json}}</pre>
+
+<pre>Page Hull Points: {{pageHullPoints}}</pre>
+
 <pre>Polygon Area: {{polygonArea}} m<sup>2</sup></pre>
-
-<pre>HullPoints = {{hullPoints}}</pre>
-
-<pre>One Week Score coords: {{oneWeekScoresCoords | json}}</pre>
 
 <pre>User one week scores: {{oneWeekScores | json}}</pre>
 
@@ -19,4 +90,4 @@
 
 <pre>User: {{thisUser | json }}</pre>
 
-<pre>User scores: {{userScores | json }}</pre>
+<pre>User scores: {{userScores | json }}</pre>-->

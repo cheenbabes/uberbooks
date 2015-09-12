@@ -2,38 +2,6 @@
     <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
-                <h3 class="panel-title pull-left">Your information</h3>
-                <a class="btn btn-danger pull-right" href="#" ng-click="logout()">
-                    <i class="fa fa-sign-out"></i> Log out
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="btn btn-default pull-right" href="#/account">
-                    <i class="fa fa-pencil"></i> Edit
-                </a>
-            </div>
-            <div class="list-group">
-                <div class="list-group-item">
-                    <p class="list-group-item-text">Name</p>
-                    <a ng-href="#/user/{{profile.$id}}"><h4 class="list-group-item-heading">{{profile.name}}</h4></a>
-                </div>
-                <div class="list-group-item">
-                    <p class="list-group-item-text">Email</p>
-                    <h4 class="list-group-item-heading">{{profile.email}}</h4>
-                </div>
-                <div class="list-group-item">
-                    <p class="list-group-item-text">Temple</p>
-                    <h4 class="list-group-item-heading">{{profile.temple}}</h4>
-                </div>
-            </div>
-            <div class="panel-footer">
-                <small>Your score will be submitted with this information.</small>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading clearfix">
                 <h3 class="panel-title pull-left">Submit Your Score</h3>
                 <!--
                 <div class="btn-group pull-right">
@@ -72,8 +40,42 @@
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">Your information</h3>
+                <a class="btn btn-danger pull-right" href="#" ng-click="logout()">
+                    <i class="fa fa-sign-out"></i> Log out
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-default pull-right" href="#/account">
+                    <i class="fa fa-pencil"></i> Edit
+                </a>
+            </div>
+            <div class="list-group">
+                <div class="list-group-item">
+                    <p class="list-group-item-text">Name</p>
+                    <a ng-href="#/user/{{profile.$id}}"><h4 class="list-group-item-heading">{{profile.name}}</h4></a>
+                </div>
+                <div class="list-group-item">
+                    <p class="list-group-item-text">Email</p>
+                    <h4 class="list-group-item-heading">{{profile.email}}</h4>
+                </div>
+                <div class="list-group-item">
+                    <p class="list-group-item-text">Temple</p>
+                    <h4 class="list-group-item-heading">{{profile.temple}}</h4>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <small>Your score will be submitted with this information.</small>
+            </div>
+        </div>
+
+    </div>
+
+
 </div>
 
+<!--
 <div>
     <pre>Profile: {{profile | json}}</pre>
     <pre>Coords: {{coords | json}}</pre>
@@ -81,4 +83,4 @@
     <pre>Scores: {{scores | json}}</pre>
     <pre>User scores: {{userScores | json}}</pre>
 
-</div>
+</div>-->

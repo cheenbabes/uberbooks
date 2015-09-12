@@ -78,7 +78,7 @@ angular.module('uberbooksApp')
             templateUrl: 'views/scores.html',
             controller: 'ScoresCtrl'
         })
-        .whenAuthenticated('/score/:scoreId', {
+        .when('/score/:scoreId', {
             templateUrl: 'views/singlescore.html',
             controller: 'SingleScoreCtrl'
         })

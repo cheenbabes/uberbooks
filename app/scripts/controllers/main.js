@@ -8,7 +8,7 @@
  * Controller of the uberbooksApp
  */
 angular.module('uberbooksApp')
-    .controller('MainCtrl', function ($scope, geolocation, $firebaseArray, Ref, FBURL, Flash, $firebaseObject) {
+    .controller('MainCtrl', ['$scope', 'geolocation', '$firebaseArray', 'Ref', 'FBURL', 'Flash', '$firebaseObject', function ($scope, geolocation, $firebaseArray, Ref, FBURL, Flash, $firebaseObject) {
         //scores used for rankings. These will be for the last week.
         var currentTime = (new Date).getTime() + 150000;
         var oneWeekPrevious = currentTime - 604800000; //one week, 168 hours
@@ -96,9 +96,10 @@ angular.module('uberbooksApp')
         }
 
 
-        //grab the last 50 scores
-        //eventually this will be paginated to 10 scores a page
-        $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(50));
+        //grab the last 15 scores
+        //eventually this will be paginated to 10 scores a page. Pagination is proving to be more complicated
+        //than anticipated, therefore I have limited it to 15 scores
+        $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(15));
 
         //default stat values
         $scope.statsTimeLength = 86400000;
@@ -149,4 +150,4 @@ angular.module('uberbooksApp')
             });
         }
 
-    });
+    }]);

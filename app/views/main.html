@@ -7,14 +7,14 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary btn-block" ng-click="updateStatsLength(86400000, '24 hours')">24 hours</button>
+                <button class="btn btn-default btn-block" ng-click="updateStatsLength(86400000, '24 hours')">24 hours</button>
             </div>
             <div class="col-md-4">
-                <button class="btn btn-primary btn-block" ng-click="updateStatsLength(259200000, '3 days')">3 days</button>
+                <button class="btn btn-default btn-block" ng-click="updateStatsLength(259200000, '3 days')">3 days</button>
             </div>
 
             <div class="col-md-4">
-                <button class="btn btn-primary btn-block" ng-click="updateStatsLength(604800000, '1 week')">1 week</button>
+                <button class="btn btn-default btn-block" ng-click="updateStatsLength(604800000, '1 week')">1 week</button>
             </div>
         </div>
         <h3>Showing stats for {{statisticTime}}, time length = {{statsTimeLength}}</h3>
@@ -114,7 +114,6 @@
                         <a class="list-group-item" href="#/user/{{rank.id}}">
                             <h4 class="list-group-item-heading">{{rank.name}}</h4>
                             <p class="list-group-item-text">${{rank.money}}</p>
-                            <p class="list-group-item-text">{{$index +1}}</p>
                         </a>
                     </div>
 
@@ -146,7 +145,6 @@
                             <h4 class="list-group-item-heading">{{rank.name}}</h4>
                             <p class="list-group-item-text">{{rank.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup>
                             </p>
-                            <p class="list-group-item-text">{{$index +1}}</p>
                         </a>
                     </div>
 
@@ -193,5 +191,5 @@
     </div>
 </div>
 
-Rankings: <pre>{{rankings | json}}</pre>Sort results: <pre>{{result | json}}</pre> RankingScores: <pre>{{rankingScores | json}}</pre>
+<!--Rankings: <pre>{{rankings | json}}</pre>Sort results: <pre>{{result | json}}</pre> RankingScores: <pre>{{rankingScores | json}}</pre>-->
 <!--Time scores: <pre>{{timescores | json}}</pre> All scores: <pre>{{scores | json}}</pre> -->
