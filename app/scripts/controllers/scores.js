@@ -33,7 +33,8 @@ angular.module('uberbooksApp')
                     email: $scope.profile.email ? $scope.profile.email : null,
                     userid: user.uid,
                     lat: $scope.coords.lat,
-                    lon: $scope.coords.lon
+                    lon: $scope.coords.lon,
+                    location: getFormattedAddress($scope.coords.lat, $scope.coords.lon)
                 });
                 $scope.score.money = '';
                 $scope.score.books = '';
@@ -55,4 +56,31 @@ angular.module('uberbooksApp')
         var scoresRef = new Firebase(FBURL + '/scores');
 
         $scope.userScores = $firebaseArray(scoresRef.orderByChild('userid').equalTo(user.uid));
+
+        function getFormattedAddress(lat, lon) {
+            var geocoder = new google.maps.Geocoder();
+            var latlng = {
+                lat: lat,
+                lng: lon
+            };
+            geocoder.geocode({
+                    'location': latlng
+                },
+                function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[3]) {
+                            return results[3].formatted_address;
+                        } else if (results[2]) {
+                            return results[2].formatted_address;
+                        } else if (results[1]) {
+                            return results[1].formatted_address;
+                        } else {
+                            return "";
+                        }
+                    } else {
+                        return "";
+                    }
+                })
+        }
+
     });

@@ -75,6 +75,7 @@
                                     <i class="fa fa-3x fa-bullseye pull-left"></i>
                                     <h4 class="list-group-item-heading">{{score.user}}</h4>
                                     <p class="list-group-item-text">{{score.timestamp | date: 'H:mm a MMM dd, yyyy'}}</p>
+                                    <reverse-geocode lat={{score.lat}} lng={{score.lon}}></reverse-geocode>
 
                                 </div>
                                 <div class="col-sm-6">
