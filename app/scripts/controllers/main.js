@@ -71,12 +71,6 @@ angular.module('uberbooksApp')
         }
 
 
-        function reduceArray(array, field) {
-            array.reduce(function (i, x) {
-                return i + parseInt(x.field);
-            }, 0);
-        }
-
         function calculatePolygonArea(array) {
             var convexHull = new ConvexHullGrahamScan();
             array.forEach(function (item) {
