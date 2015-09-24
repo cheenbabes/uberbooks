@@ -82,11 +82,8 @@ angular.module('uberbooksApp')
         }
 
         function showError(err) {
-            //        if(Object.keys(err).length != 0){
             Flash.create('danger', "There was an error. Please try again.");
             $scope.err = err;
-            //        }
-
         }
 
 

@@ -58,36 +58,6 @@ angular.module('uberbooksApp')
             });
         });
 
-        function groupBy(array, f) {
-            var groups = {};
-            array.forEach(function (o) {
-                var group = JSON.stringify(f(o));
-                groups[group] = groups[group] || [];
-                groups[group].push(o);
-            });
-            return Object.keys(groups).map(function (group) {
-                return groups[group];
-            })
-        }
-
-
-        function calculatePolygonArea(array) {
-            var convexHull = new ConvexHullGrahamScan();
-            array.forEach(function (item) {
-                convexHull.addPoint(item.lon, item.lat);
-            });
-
-            var hullPoints = convexHull.getHull();
-            var googlePolygonPoints = hullPoints.map(function (item) {
-                return new google.maps.LatLng(item.y, item.x);
-            });
-
-            var polygon = new google.maps.Polygon({
-                paths: googlePolygonPoints
-            })
-
-            return google.maps.geometry.spherical.computeArea(polygon.getPath());
-        }
 
 
         //grab the last 15 scores
@@ -142,6 +112,45 @@ angular.module('uberbooksApp')
                     console.log("Error: ", error);
                 });
             });
+        }
+
+        //Utility Methods
+
+        function reduceArray(array, field) {
+            array.reduce(function (i, x) {
+                return i + parseInt(x[field]);
+            }, 0);
+        }
+
+        function groupBy(array, f) {
+            var groups = {};
+            array.forEach(function (o) {
+                var group = JSON.stringify(f(o));
+                groups[group] = groups[group] || [];
+                groups[group].push(o);
+            });
+            return Object.keys(groups).map(function (group) {
+                return groups[group];
+            })
+        }
+
+
+        function calculatePolygonArea(array) {
+            var convexHull = new ConvexHullGrahamScan();
+            array.forEach(function (item) {
+                convexHull.addPoint(item.lon, item.lat);
+            });
+
+            var hullPoints = convexHull.getHull();
+            var googlePolygonPoints = hullPoints.map(function (item) {
+                return new google.maps.LatLng(item.y, item.x);
+            });
+
+            var polygon = new google.maps.Polygon({
+                paths: googlePolygonPoints
+            })
+
+            return google.maps.geometry.spherical.computeArea(polygon.getPath());
         }
 
     }]);

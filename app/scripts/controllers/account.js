@@ -8,10 +8,6 @@
  */
 angular.module('uberbooksApp')
     .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout, geolocation, Flash) {
-        angular.element(document).ready(function () {
-            //Flash.create('info', 'Welcome to your account');
-        });
-
         $scope.user = user;
         $scope.logout = function () {
             Auth.$unauth();
