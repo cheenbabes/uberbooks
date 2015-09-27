@@ -28,7 +28,7 @@ angular.module('uberbooksApp')
                     //all the records for a particular person have the same userid, so get the first one.  
                     //This would be something like "simplelogin:10"
                     var uid = $scope.result[j][0].userid;
-                    var name = $scope.result[j][0].user;
+                    var name = $scope.result[j][($scope.result[j].length - 1)].user;
                     var user = {
                         name: name,
                         id: uid,
