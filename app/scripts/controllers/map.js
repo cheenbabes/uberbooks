@@ -36,6 +36,8 @@ angular.module('uberbooksApp')
                 infoWindow.open($scope.map);
 
             };
+        }).catch(function (error) {
+            $("#warning-message").append("<div class='alert alert-danger'>You have rejected geolocation services. You will not be able to see the map unless you enable your browser geolocation! Please check <a href='https://waziggle.com/BrowserAllow.aspx'>here</a> on how to enable it.</div>");
         });
 
     });
