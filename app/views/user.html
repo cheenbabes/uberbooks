@@ -1,4 +1,4 @@
-<map center="current-location" zoom="5" styles="{{style}}" style="height: 700px;">
+<map center="39.108500, -98.544734" zoom="5" styles="{{style}}" style="height: 700px;">
     <shape id="polygon" name="polygon" paths="{{pageHullPoints}}" stroke-color="#000" stroke-opacity="0.8" stroke-weight="2" fill-color="#000" fill-opacity="0.35"></shape>
     <marker ng-repeat="score in oneWeekScores" position="{{score.lat}}, {{score.lon}}" on-click="showInfoWindow(event, score)"></marker>
 </map>
