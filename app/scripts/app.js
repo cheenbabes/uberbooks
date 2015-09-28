@@ -20,5 +20,6 @@ angular.module('uberbooksApp', [
     'firebase.auth',
     'geolocation',
     'flash',
-    'ngMap'
+    'ngMap',
+    'angularValidator'
   ]);

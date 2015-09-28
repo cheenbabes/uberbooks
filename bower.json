@@ -19,7 +19,9 @@
         "lodash": "3.10.1",
         "ngGeolocation": ">=0.0.2",
         "ngmap": "1.13.4",
-        "angular-ui-bootstrap": "0.13.4"
+        "angular-ui-bootstrap": "0.13.4",
+        "tg-angular-validator": "1.2.7"
+
 
     },
     "devDependencies": {
