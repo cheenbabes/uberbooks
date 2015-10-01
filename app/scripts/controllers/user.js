@@ -18,7 +18,7 @@ angular.module('uberbooksApp')
 
         $scope.userScores.$loaded().then(function (x) {
             var currentTime = (new Date).getTime() + 150000;
-            var oneWeekPrevious = currentTime - 604800000; //one week
+            var oneWeekPrevious = currentTime - 5184000000; //60 days
             $scope.oneWeekScores = []
             for (var i = 0; i < x.length; i++) {
                 if (x[i].timestamp >= oneWeekPrevious && x[i].timestamp <= currentTime) {

@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="panel-footer">
-                <small><b>Scores are for the last seven days ONLY </b></small>
+                <small>Aggregate calculations are based on the scores from the <b>last seven days ONLY!</b></small>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="list-group">
-                    <div ng-repeat="score in oneWeekScores | reverse | filter: search">
+                    <div dir-paginate="score in oneWeekScores | reverse | filter: search |itemsPerPage: 15">
                         <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -70,7 +70,12 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <small>Click on any of the scores to see details.</small>
+                    <div class="text-center">
+                        <dir-pagination-controls auto-hide="false" boundary-links="true" direction-links="true">
+                        </dir-pagination-controls>
+                    </div>
+
+                    <small>Scores are for the last <strong>60 days</strong>.Click on any of the scores to see details.</small>
                 </div>
             </div>
         </div>
