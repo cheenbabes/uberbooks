@@ -21,5 +21,5 @@ angular.module('uberbooksApp', [
     'geolocation',
     'flash',
     'ngMap',
-    'angularValidator'
+    'angularUtils.directives.dirPagination'
   ]);
