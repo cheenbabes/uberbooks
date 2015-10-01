@@ -44,3 +44,44 @@
                 <!--                <small>Information entered automatically syncs without needing to submit</small>-->
             </div>
         </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">Change My Password</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">Current Password</label>
+                        <div class="col-xs-9">
+                            <input type="password" ng-keypress="clear()" ng-model="oldpass" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">New Password:</label>
+                        <div class="col-xs-9">
+                            <input type="password" ng-keypress="clear()" ng-model="newpass" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">Confirm New Password:</label>
+                        <div class="col-xs-9">
+                            <input type="password" ng-keypress="clear()" ng-model="confirm" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label"></label>
+                        <div class="col-xs-9">
+                            <button id="submit-button" class="btn btn-success" ng-click="changePassword(oldpass, newpass, confirm)">
+                                <i class="glyphicon glyphicon-ok"></i> Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+            </div>
+        </div>
+    </div>
+</div>

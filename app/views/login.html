@@ -4,23 +4,31 @@
     <div class="col-md-6">
         <form role="form">
             <p class="form-group">
-                <label for="loginEmail">Email</label>
-                <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control" />
+                <label for="loginEmail" ng-hide="passwordMode">Email</label>
+                <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control" ng-hide="passwordMode" />
             </p>
-            <p class="form-group">
+            <p class="form-group" ng-hide="passwordMode">
                 <label for="loginPass">Password</label>
-                <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control" />
+                <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control" ng-hide="passwordMode" />
             </p>
             <p class="form-group" ng-cloak ng-show="createMode">
                 <label for="loginConfirm">Confirm password</label>
                 <input id="loginConfirm" required name="confirm" type="password" ng-model="confirm" class="form-control" />
             </p>
+            <p><a style="cursor:default" ng-click="passwordMode =true" ng-hide="passwordMode">Forgot your password?</a>
+                <p class="form-group" ng-cloak ng-show="passwordMode">
+                    <label for="loginConfirm">Enter your email to recover your password</label>
+                    <input id="loginConfirm" required name="confirm" type="email" ng-model="recover.email" class="form-control" />
+                </p>
+            </p>
+
 
             <p>
-                <button class="btn btn-primary" ng-click="passwordLogin(email, pass)" ng-hide="createMode">Log In</button>
-                <button class="btn btn-default" ng-click="createMode = true" ng-hide="createMode">Register</button>
-                <button class="btn btn-primary" ng-cloak ng-show="createMode" ng-click="createAccount(email, pass, confirm)">Create Account</button>
+                <button class="btn btn-success" ng-click="passwordLogin(email, pass)" ng-hide="createMode || passwordMode">Log In</button>
+                <button class="btn btn-default" ng-click="createMode = true" ng-hide="createMode || passwordMode">Register</button>
+                <button class="btn btn-success" ng-cloak ng-show="createMode" ng-click="createAccount(email, pass, confirm)">Create Account</button>
                 <button class="btn btn-danger" ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
+                <button class="btn btn-success" ng-cloak ng-show="passwordMode" ng-click="recoverPassword()">Submit</button>
             </p>
         </form>
     </div>

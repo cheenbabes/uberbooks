@@ -25,9 +25,9 @@ angular.module('uberbooksApp')
         $scope.changePassword = function (oldPass, newPass, confirm) {
             $scope.err = null;
             if (!oldPass || !newPass) {
-                error('Please enter all fields');
+                error('Please enter all fields.');
             } else if (newPass !== confirm) {
-                error('Passwords do not match');
+                error('Passwords do not match.');
             } else {
                 Auth.$changePassword({
                         email: profile.email,
@@ -35,7 +35,7 @@ angular.module('uberbooksApp')
                         newPassword: newPass
                     })
                     .then(function () {
-                        success('Password changed');
+                        success('Password changed.');
                     }, error);
             }
         };
@@ -63,11 +63,13 @@ angular.module('uberbooksApp')
         }
 
         function error(err) {
-            alert(err, 'danger');
+            Flash.create('danger', err);
+            //            alert(err, 'danger');
         }
 
         function success(msg) {
-            alert(msg, 'success');
+            Flash.create('success', msg);
+            //            alert(msg, 'success');
         }
 
         function alert(msg, type) {

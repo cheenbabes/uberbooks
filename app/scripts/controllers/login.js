@@ -63,6 +63,29 @@ angular.module('uberbooksApp')
             }
         };
 
+
+        $scope.recoverPassword = function () {
+            Ref.resetPassword({
+                email: $scope.recover.email
+            }, function (error) {
+                if (error) {
+                    switch (error.code) {
+                    case "INVALID_USER":
+                        Flash.create('danger', "The specified user account does not exist.");
+                        console.log("The specified user account does not exist.");
+                        break;
+                    default:
+                        Flash.create('danger', "Error resetting password");
+                        console.log("Error resetting password:", error);
+                    }
+                } else {
+                    Flash.create('success', "Password reset email sent successfuly!");
+                    $scope.passwordMode = false;
+                    console.log("Password reset email sent successfully!");
+                }
+            });
+        };
+
         function firstPartOfEmail(email) {
             return ucfirst(email.substr(0, email.indexOf('@')) || '');
         }
