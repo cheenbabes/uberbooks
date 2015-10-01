@@ -7,7 +7,7 @@
  * Provides rudimentary account management functions.
  */
 angular.module('uberbooksApp')
-    .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout, geolocation, Flash) {
+    .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout, geolocation, Flash, $location) {
         angular.element(document).ready(function () {
             //Flash.create('info', 'Welcome to your account');
         });
@@ -54,6 +54,13 @@ angular.module('uberbooksApp')
                 })
                 .catch(error);
         };
+
+        $scope.showFlash = function () {
+            Flash.create('success', "Your information has been saved! Redirecting you to the home page in 5 seconds.");
+            setTimeout(function () {
+                $location.path('/home');
+            }, 5000)
+        }
 
         function error(err) {
             alert(err, 'danger');
