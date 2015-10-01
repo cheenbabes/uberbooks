@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="list-group">
-                    <div ng-repeat="score in scores | reverse | filter: search">
+                    <div dir-paginate="score in scores | reverse | filter: search | itemsPerPage: 15">
                         <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -84,102 +84,109 @@
                     </div>
                 </div>
                 <div class="panel-footer">
+                    <div class="text-center">
+                        <dir-pagination-controls auto-hide="false" boundary-links="true" direction-links="true"></dir-pagination-controls>
+                    </div>
                     <small>Click on any of the scores to see details.</small>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-6">
-        <div class="bootcards-list">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title text-center"> Lakshmi Leaders </h4>
-                </div>
-                <div class="panel-body">
-                    <form>
-                        <div class="row">
-                            <div class="col-xs-11">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchMoney">
-                                </div>
-                            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bootcards-list">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title text-center"> Lakshmi Leaders </h4>
                         </div>
-                    </form>
-                </div>
-                <div class="list-group">
-                    <div ng-repeat="rank in rankings|filter: searchMoney|limitTo:5|orderBy: '-money'">
-                        <a class="list-group-item" href="#/user/{{rank.id}}">
-                            <h4 class="list-group-item-heading">{{rank.name}}</h4>
-                            <p class="list-group-item-text">${{rank.money}}</p>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="bootcards-list">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title text-center"> Map Area Leaders </h4>
-                </div>
-                <div class="panel-body">
-                    <form>
-                        <div class="row">
-                            <div class="col-xs-11">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchMap">
+                        <div class="panel-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-xs-11">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchMoney">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-                <div class="list-group">
-                    <div ng-repeat="rank in rankings|filter: searchMap|limitTo:5|orderBy: '-mapArea'">
-                        <a class="list-group-item" href="#/user/{{rank.id}}">
-                            <h4 class="list-group-item-heading">{{rank.name}}</h4>
-                            <p class="list-group-item-text">{{rank.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup>
-                            </p>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="bootcards-list">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title text-center"> Book Leaders </h4>
-                </div>
-                <div class="panel-body">
-                    <form>
-                        <div class="row">
-                            <div class="col-xs-11">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchBooks">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="list-group">
-                    <div ng-repeat="rank in rankings | filter: searchBooks | limitTo:5 | orderBy: '-books'">
-                        <a class="list-group-item" ng-href="#/user/{{rank.id}}">
-                            <div class="row">
-                                <div class="col-sm-6">
-
+                        <div class="list-group">
+                            <div ng-repeat="rank in rankings|filter: searchMoney|limitTo:5|orderBy: '-money'">
+                                <a class="list-group-item" href="#/user/{{rank.id}}">
                                     <h4 class="list-group-item-heading">{{rank.name}}</h4>
-                                    <p class="list-group-item-text">{{rank.books}} books</p>
-                                </div>
+                                    <p class="list-group-item-text">${{rank.money}}</p>
+                                </a>
                             </div>
-                        </a>
+
+                        </div>
                     </div>
                 </div>
-                <div class="panel-footer">
-                    <small></small>
+            </div>
+            <div class="col-md-12">
+                <div class="bootcards-list">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title text-center"> Map Area Leaders </h4>
+                        </div>
+                        <div class="panel-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-xs-11">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchMap">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="list-group">
+                            <div ng-repeat="rank in rankings|filter: searchMap|limitTo:5|orderBy: '-mapArea'">
+                                <a class="list-group-item" href="#/user/{{rank.id}}">
+                                    <h4 class="list-group-item-heading">{{rank.name}}</h4>
+                                    <p class="list-group-item-text">{{rank.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup>
+                                    </p>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="bootcards-list">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title text-center"> Book Leaders </h4>
+                        </div>
+                        <div class="panel-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-xs-11">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchBooks">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="list-group">
+                            <div ng-repeat="rank in rankings | filter: searchBooks | limitTo:5 | orderBy: '-books'">
+                                <a class="list-group-item" ng-href="#/user/{{rank.id}}">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+
+                                            <h4 class="list-group-item-heading">{{rank.name}}</h4>
+                                            <p class="list-group-item-text">{{rank.books}} books</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <small></small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

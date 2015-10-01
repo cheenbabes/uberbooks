@@ -96,10 +96,8 @@ angular.module('uberbooksApp')
         }
 
 
-        //grab the last 15 scores
-        //eventually this will be paginated to 10 scores a page. Pagination is proving to be more complicated
-        //than anticipated, therefore I have limited it to 15 scores
-        $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(15));
+        //grab the last 50 scores, pagination is now enabled
+        $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(50));
 
         //default stat values
         $scope.statsTimeLength = 86400000;
