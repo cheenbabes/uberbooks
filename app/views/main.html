@@ -74,19 +74,6 @@
                     <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                         <span class="pull-right text-muted">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span> | <strong>${{score.money}}</strong>
                         </span>{{score.user}}
-                        <!--
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h4 class="list-group-item-heading">{{score.user}}</h4>
-                                <p class="list-group-item-text">{{score.timestamp | date: 'H:mm a MMM dd, yyyy'}}</p>
-
-                            </div>
-                            <div class="col-sm-6">
-                                <h4 class="list-group-item-heading">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></h4>
-                                <h4 class="list-group-item-heading">${{score.money}}</h4>
-                            </div>
-                        </div>
--->
                     </a>
                 </div>
             </div>
@@ -112,10 +99,6 @@
                         <div ng-repeat="rank in rankings|filter: searchMoney|limitTo:5|orderBy: '-money'">
                             <a class="list-group-item" href="#/user/{{rank.id}}">
                                 <span class="pull-right text-muted">${{rank.money}}</span> {{rank.name}}
-                                <!--
-                                <h4 class="list-group-item-heading">{{rank.name}}</h4>
-                                <p class="list-group-item-text">${{rank.money}}</p>
--->
                             </a>
                         </div>
                     </div>

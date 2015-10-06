@@ -3,22 +3,22 @@
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
                 <h3 class="panel-title pull-left">Score Summary</h3>
-                <a class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="bottom" title="Please contact us to change your score">
-                    <i class="fa fa-pencil"></i> Edit
+                <a class="pull-right text-primary" data-toggle="tooltip" data-placement="bottom" title="Please contact us to change your score">
+                    <span class="icon icon-edit"></span> Edit
                 </a>
             </div>
             <div class="list-group">
                 <div class="list-group-item">
-                    <p class="list-group-item-text">Name</p>
-                    <a ng-href="#/user/{{score.userid}}"><h4 class="list-group-item-heading">{{score.user}}</h4></a>
+                    <span class="pull-right">{{score.user}}</span>Name
                 </div>
                 <div class="list-group-item">
-                    <p class="list-group-item-text">Lakshmi collected</p>
-                    <h4 class="list-group-item-heading">${{score.money}}</h4>
+                    <span class="pull-right">${{score.money}}</span>Lakshmi collected
                 </div>
                 <div class="list-group-item">
-                    <p class="list-group-item-text">Books distributed</p>
-                    <h4 class="list-group-item-heading">{{score.books}} <span>{{score.books == 1? 'book' : 'books'}}</span></h4>
+                    <span class="pull-right">{{score.books}} <span>{{score.books == 1? 'book' : 'books'}}</span></span>Books distributed
+                </div>
+                <div class="list-group-item">
+                    <span class="pull-right">{{score.timestamp | date: 'MMM dd, yyyy H:mm a '}}</span>Date and Time
                 </div>
             </div>
             <div class="panel-footer">

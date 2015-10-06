@@ -13,16 +13,15 @@
             </div>
             <div class="list-group">
                 <div class="list-group-item">
-                    <p class="list-group-item-text">Lakshmi</p>
-                    <h4 class="list-group-item-heading">${{ranking.money}}</h4>
+                    <span class="pull-right">{{ranking.name}}</span>Name
                 </div>
                 <div class="list-group-item">
-                    <p class="list-group-item-text">Books</p>
-                    <h4 class="list-group-item-heading">{{ranking.books}} books</h4>
+                    <span class="pull-right">${{ranking.money}}</span>Lakshmi
                 </div>
                 <div class="list-group-item">
-                    <p class="list-group-item-text">Map Area</p>
-                    <h4 class="list-group-item-heading">{{ranking.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup></h4>
+                    <span class="pull-right">{{ranking.books}} <span>{{score.books == 1? 'book' : 'books'}}</span></span>Books distributed </div>
+                <div class="list-group-item">
+                    <span class="pull-right">{{ranking.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup></span> Map Area
                 </div>
             </div>
             <div class="panel-footer">
@@ -36,19 +35,10 @@
         <div class="bootcards-list">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title text-center"> Latest scores </h4>
+                    <h4 class="panel-title text-center"> Latest scores for <b>{{oneWeekScores[1].user}}</b></h4>
                 </div>
                 <div class="panel-body">
-                    <form>
-                        <div class="row">
-                            <div class="col-xs-11">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search Scores..." ng-model="search">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <input type="text" class="form-control" placeholder="Search Scores..." ng-model="search">
                 </div>
 
                 <div class="list-group">
@@ -56,13 +46,11 @@
                         <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <i class="fa fa-3x fa-bullseye pull-left"></i>
-                                    <h4 class="list-group-item-heading">{{score.user}}</h4>
-                                    <p class="list-group-item-text">{{score.timestamp | date: 'H:mm a MMM dd, yyyy'}}</p>
+                                    <p class="list-group-item-text">{{score.timestamp | date: 'MMM dd, yyyy H:mm a'}}</p>
 
                                 </div>
                                 <div class="col-sm-6">
-                                    <h4 class="list-group-item-heading">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></h4>
+                                    <h4 class="list-group-item-heading pull-right">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></h4>
                                     <h4 class="list-group-item-heading">${{score.money}}</h4>
                                 </div>
                             </div>
