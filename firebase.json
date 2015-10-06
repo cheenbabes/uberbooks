@@ -1,6 +1,6 @@
 {
     "firebase": "uberbooks",
-    "public": "dist",
+    "public": "app",
     "ignore": [
     "firebase.json",
     "**/.*",

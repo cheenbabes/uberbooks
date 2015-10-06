@@ -24,6 +24,45 @@
 
     <!-- Add your site or application content here -->
     <!--    <div class="header" ng-cloak="">-->
+
+    <nav class="iconav">
+        <a class="iconav-brand" href="#">
+            <span class="icon icon-leaf iconav-brand-icon"></span>
+        </a>
+        <div class="iconav-slider">
+            <ul class="nav nav-pills iconav-nav">
+                <li>
+                    <a href="#/" title="Home" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-home"></span>
+                        <small class="iconav-nav-label visible-xs-block">Overview</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/map" title="Map" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-globe"></span>
+                        <small class="iconav-nav-label visible-xs-block">Map</small>
+                    </a>
+                </li>
+                <li>
+                    <a ng-show-auth="" href="#/scores" title="Submit Scores" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-area-graph"></span>
+                        <small class="iconav-nav-label visible-xs-block">Submit Scores</small>
+                    </a>
+                </li>
+                <li>
+                    <a ng-show-auth="" href="#/account" title="Account" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-user"></span>
+                        <small class="iconav-nav-label visible-xs-block">Account</small>
+                    </a>
+                    <a ng-hide-auth="" href="#/login" title="Log in" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-add-user"></span>
+                        <small class="iconav-nav-label visible-xs-block">Log in</small>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -56,6 +95,7 @@
             </div>
         </div>
     </div>
+-->
     <!--    </div>-->
 
     <div class="container">
@@ -114,14 +154,14 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/angularfire/config.js"></script>
     <script src="scripts/angularfire/firebase.ref.js"></script>
-    <script src="scripts\controllers\chat.js"></script>
-    <script src="scripts\filters\reverse.js"></script>
+    <script src="scripts/controllers/chat.js"></script>
+    <script src="scripts/filters/reverse.js"></script>
     <script src="scripts/angularfire/auth.js"></script>
-    <script src="scripts\controllers\login.js"></script>
-    <script src="scripts\controllers\account.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/account.js"></script>
     <script src="scripts/directives/ngShowAuth.js"></script>
     <script src="scripts/directives/ngHideAuth.js"></script>
-    <script src="scripts\routes.js"></script>
+    <script src="scripts/routes.js"></script>
     <script src="scripts/controllers/scores.js"></script>
     <script src="scripts/factory/factory.js"></script>
     <script src="scripts/controllers/singlescore.js"></script>
