@@ -2330,12 +2330,14 @@ input[type="button"].btn-block {
 
 @media (min-width: 992px) {
     .container {
+        padding-top: 30px;
         width: 970px;
     }
 }
 
 @media (min-width: 1200px) {
     .container {
+        padding-top: 30px;
         width: 1170px;
     }
 }
