@@ -72,6 +72,9 @@
             <div class="list-group">
                 <div dir-paginate="score in scores | reverse | filter: search | itemsPerPage: 15">
                     <a class="list-group-item" ng-href="#/score/{{score.$id}}">
+                        <span class="pull-right text-muted">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span> | <strong>${{score.money}}</strong>
+                        </span>{{score.user}}
+                        <!--
                         <div class="row">
                             <div class="col-sm-6">
                                 <h4 class="list-group-item-heading">{{score.user}}</h4>
@@ -83,6 +86,7 @@
                                 <h4 class="list-group-item-heading">${{score.money}}</h4>
                             </div>
                         </div>
+-->
                     </a>
                 </div>
             </div>
