@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-6">
-
-
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Score Summary</h3>
-
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">Score Summary</h3>
+                <a class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="bottom" title="Please contact us to change your score">
+                    <i class="fa fa-pencil"></i> Edit
+                </a>
             </div>
             <div class="list-group">
                 <div class="list-group-item">
@@ -18,8 +18,7 @@
                 </div>
                 <div class="list-group-item">
                     <p class="list-group-item-text">Books distributed</p>
-                    <h4 class="list-group-item-heading">{{score.books}} <span>{{score.books == 1? 'book' : 'books'}}</span>
-            </h4>
+                    <h4 class="list-group-item-heading">{{score.books}} <span>{{score.books == 1? 'book' : 'books'}}</span></h4>
                 </div>
             </div>
             <div class="panel-footer">

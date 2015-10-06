@@ -9,11 +9,13 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel='stylesheet' href='bower_components/angular-flash-alert/dist/angular-flash.css' />
+    <link rel="stylesheet" href="bower_components/angular-flash-alert/dist/angular-flash.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/bootcards/dist/css/bootcards-desktop.css">
     <link rel="stylesheet" href="styles/main.css">
 
     <!-- endbuild -->
@@ -26,46 +28,39 @@
 
     <!-- Add your site or application content here -->
     <!--    <div class="header" ng-cloak="">-->
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="#/">&uuml;berbooks</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+                <ul class="nav navbar-nav">
+                    <li><a href="#/">Home</a>
+                        <li><a href="#/map">Map</a>
+                        </li>
+                        <li><a ng-show-auth="" href="#/scores">Submit Scores</a>
+                        </li>
+                        <li>
+                            <a ng-hide-auth="" href="#/login">Log in</a>
+                            <a ng-show-auth="" href="#/account">Account</a>
+                        </li>
 
 
-
-    <nav class="iconav">
-        <a class="iconav-brand" href="#">
-            <span class="icon icon-leaf iconav-brand-icon"></span>
-        </a>
-        <div class="iconav-slider">
-            <ul class="nav nav-pills iconav-nav">
-                <li>
-                    <a href="#/" title="Home" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-home"></span>
-                        <small class="iconav-nav-label visible-xs-block">Overview</small>
-                    </a>
-                </li>
-                <li>
-                    <a href="#/map" title="Map" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-globe"></span>
-                        <small class="iconav-nav-label visible-xs-block">Map</small>
-                    </a>
-                </li>
-                <li>
-                    <a ng-show-auth="" href="#/scores" title="Submit Scores" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-area-graph"></span>
-                        <small class="iconav-nav-label visible-xs-block">Submit Scores</small>
-                    </a>
-                </li>
-                <li>
-                    <a ng-show-auth="" href="#/account" title="Account" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-user"></span>
-                        <small class="iconav-nav-label visible-xs-block">Account</small>
-                    </a>
-                    <a ng-hide-auth="" href="#/login" title="Log in" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-add-user"></span>
-                        <small class="iconav-nav-label visible-xs-block">Log in</small>
-                    </a>
-                </li>
-            </ul>
+                </ul>
+            </div>
         </div>
-    </nav>
+    </div>
+    <!--    </div>-->
 
     <div class="container">
         <div flash-message="5000"></div>
@@ -77,9 +72,6 @@
             <p class="text-center">हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे | हरे रामा हरे रामा रामा रामा हरे हरे ||</p>
         </div>
     </div>
-
-
-
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -111,9 +103,9 @@
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
     <script src="bower_components/angularjs-geolocation/src/geolocation.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/ngGeolocation/ngGeolocation.js"></script>
     <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="bower_components/tg-angular-validator/dist/angular-validator.js"></script>
     <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
@@ -139,22 +131,8 @@
     <script src="scripts/controllers/map.js"></script>
     <script src="scripts/controllers/user.js"></script>
     <script src="scripts/libraries/graham-scan.min.js"></script>
-    <script src="scripts/libraries/toolkit.js"></script>
-    <script src="scripts/libraries/chart.js"></script>
-    <script src="scripts/libraries/tablesorter.min.js"></script>
-    <script src="scripts/libraries/chartjs-data-api.js"></script>
-    <script src="scripts/libraries/datepicker.js"></script>
-
 
     <!-- endbuild -->
-
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-
-    <script>
-        jQuery(function () {
-            jQuery('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuEpwI2jmGtme1AhX9s0qSYSgNdXDZ9a0&libraries=geometry"></script>
 </body>
