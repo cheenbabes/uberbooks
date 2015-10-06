@@ -1,144 +1,125 @@
-<h4>Welcome. See the latest scores here!</h4>
-
-<div class="panel panel-default bootcards-summary">
-    <div class="panel-heading">
-        <h4 class="panel-title text-center">Statistics</h4>
+<div class="dashhead">
+    <div class="dashhead-titles">
+        <h6 class="dashhead-subtitle">Dashboards</h6>
+        <h3 class="dashhead-title">Overview</h3>
     </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-4">
-                <button class="btn btn-default btn-block" ng-click="updateStatsLength(86400000, '24 hours')">24 hours</button>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-default btn-block" ng-click="updateStatsLength(259200000, '3 days')">3 days</button>
-            </div>
 
-            <div class="col-md-4">
-                <button class="btn btn-default btn-block" ng-click="updateStatsLength(604800000, '1 week')">1 week</button>
-            </div>
+    <div class="dashhead-toolbar">
+        <div class="input-with-icon dashhead-toolbar-item">
+            <input type="text" value="TODO-SELECTED DATE RANGE" class="form-control" data-provide="datepicker">
+            <span class="icon icon-calendar"></span>
         </div>
-        <h3>Showing stats for {{statisticTime}}, time length = {{statsTimeLength}}</h3>
-        <div class="row">
-            <div class="col-xs-6 col-sm-4">
-                <div class="bootcards-summary-item" href="#">
-                    <i class="glyphicon glyphicon-usd my-glyph"></i>
-                    <h4>$ {{totalMoney}}</h4>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-4">
-                <div class="bootcards-summary-item" href="#">
-                    <i class="glyphicon glyphicon-book my-glyph"></i>
-                    <h4>{{totalBooks}} Books</h4>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-4">
-                <div class="bootcards-summary-item" href="#">
-                    <i class="glyphicon glyphicon-user my-glyph"></i>
-                    <h4>{{devoteeCount}} <span>{{devoteeCount ===1 ? 'Devotee' : 'Devotees'}}</span></h4>
-                </div>
-            </div>
+        <span class="dashhead-toolbar-divider hidden-xs"></span>
+        <div class="btn-group dashhead-toolbar-item btn-group-thirds">
+            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(86400000, '24 hours')">24 Hours</button>
+            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(259200000, '3 days')">3 Days</button>
+            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(604800000, '1 week')">Week</button>
         </div>
     </div>
+</div>
 
-    <div class="panel-footer">
-        <small>Statistics and rankings will update automatically. You do not need to refresh the page.</small>
+<div class="hr-divider m-t-md m-b">
+    <h3 class="hr-divider-content hr-divider-heading">Quick Stats</h3>
+</div>
+
+<div class="row statcards">
+    <div class="col-sm-4 m-b">
+        <div class="statcard statcard-success">
+            <div class="p-a">
+                <span class="statcard-desc">Lakshmi</span>
+                <h2 class="statcard-number">$ {{totalMoney}}</h2>
+                <hr class="statcard-hr m-b-0">
+            </div>
+            <canvas id="sparkline1" width="189" height="47" class="sparkline" data-chart="spark-line" data-value="[{data:[28,68,41,43,96,45,100]}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+        </div>
     </div>
-
+    <div class="col-sm-4 m-b">
+        <div class="statcard statcard-danger">
+            <div class="p-a">
+                <span class="statcard-desc">Books</span>
+                <h2 class="statcard-number">{{totalBooks}}</h2>
+                <hr class="statcard-hr m-b-0">
+            </div>
+            <canvas id="sparkline1" width="189" height="47" class="sparkline" data-chart="spark-line" data-value="[{data:[28,68,41,43,96,45,100]}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+        </div>
+    </div>
+    <div class="col-sm-4 m-b">
+        <div class="statcard statcard-info">
+            <div class="p-a">
+                <span class="statcard-desc">Devotees</span>
+                <h2 class="statcard-number">{{devoteeCount}}</h2>
+                <hr class="statcard-hr m-b-0">
+            </div>
+            <canvas id="sparkline1" width="189" height="47" class="sparkline" data-chart="spark-line" data-value="[{data:[28,68,41,43,96,45,100]}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+        </div>
+    </div>
 </div>
 
 
+<hr>
 <div class="row">
     <div class="col-md-6">
-        <div class="bootcards-list">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title text-center"> Latest scores </h4>
-                </div>
-                <div class="panel-body">
-                    <form>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title text-center"> Latest scores </h4>
+            </div>
+            <div class="panel-body">
+                <input type="text" class="form-control" placeholder="Search Scores..." ng-model="search">
+            </div>
+
+            <div class="list-group">
+                <div dir-paginate="score in scores | reverse | filter: search | itemsPerPage: 15">
+                    <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                         <div class="row">
-                            <div class="col-xs-11">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search Scores..." ng-model="search">
-                                </div>
+                            <div class="col-sm-6">
+                                <h4 class="list-group-item-heading">{{score.user}}</h4>
+                                <p class="list-group-item-text">{{score.timestamp | date: 'H:mm a MMM dd, yyyy'}}</p>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <h4 class="list-group-item-heading">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></h4>
+                                <h4 class="list-group-item-heading">${{score.money}}</h4>
                             </div>
                         </div>
-                    </form>
+                    </a>
                 </div>
-
-                <div class="list-group">
-                    <div dir-paginate="score in scores | reverse | filter: search | itemsPerPage: 15">
-                        <a class="list-group-item" ng-href="#/score/{{score.$id}}">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h4 class="list-group-item-heading">{{score.user}}</h4>
-                                    <p class="list-group-item-text">{{score.timestamp | date: 'H:mm a MMM dd, yyyy'}}</p>
-
-                                </div>
-                                <div class="col-sm-6">
-                                    <h4 class="list-group-item-heading">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></h4>
-                                    <h4 class="list-group-item-heading">${{score.money}}</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <div class="text-center">
-                        <dir-pagination-controls auto-hide="false" boundary-links="true" direction-links="true"></dir-pagination-controls>
-                    </div>
-                    <small>Click on any of the scores to see details.</small>
+            </div>
+            <div class="panel-footer" style="background:#1ca8dd">
+                <div class="text-center">
+                    <dir-pagination-controls></dir-pagination-controls>
                 </div>
             </div>
         </div>
+
     </div>
     <div class="col-md-6">
         <div class="row">
             <div class="col-md-12">
-                <div class="bootcards-list">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title text-center"> Lakshmi Leaders </h4>
-                        </div>
-                        <div class="panel-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-xs-11">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchMoney">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="list-group">
-                            <div ng-repeat="rank in rankings|filter: searchMoney|limitTo:5|orderBy: '-money'">
-                                <a class="list-group-item" href="#/user/{{rank.id}}">
-                                    <h4 class="list-group-item-heading">{{rank.name}}</h4>
-                                    <p class="list-group-item-text">${{rank.money}}</p>
-                                </a>
-                            </div>
-
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title text-center"> Lakshmi Leaders </h4>
+                    </div>
+                    <div class="panel-body">
+                        <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchMoney">
+                    </div>
+                    <div class="list-group">
+                        <div ng-repeat="rank in rankings|filter: searchMoney|limitTo:5|orderBy: '-money'">
+                            <a class="list-group-item" href="#/user/{{rank.id}}">
+                                <h4 class="list-group-item-heading">{{rank.name}}</h4>
+                                <p class="list-group-item-text">${{rank.money}}</p>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="bootcards-list">
-                    <div class="panel panel-default">
+                    <div class="panel panel-warning">
                         <div class="panel-heading">
                             <h4 class="panel-title text-center"> Map Area Leaders </h4>
                         </div>
                         <div class="panel-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-xs-11">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchMap">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchMap">
                         </div>
                         <div class="list-group">
                             <div ng-repeat="rank in rankings|filter: searchMap|limitTo:5|orderBy: '-mapArea'">
@@ -155,20 +136,12 @@
             </div>
             <div class="col-md-12">
                 <div class="bootcards-list">
-                    <div class="panel panel-default">
+                    <div class="panel panel-success">
                         <div class="panel-heading">
                             <h4 class="panel-title text-center"> Book Leaders </h4>
                         </div>
                         <div class="panel-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-xs-11">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchBooks">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            <input type="text" class="form-control" placeholder="Search Leaders..." ng-model="searchBooks">
                         </div>
                         <div class="list-group">
                             <div ng-repeat="rank in rankings | filter: searchBooks | limitTo:5 | orderBy: '-books'">
@@ -182,9 +155,6 @@
                                     </div>
                                 </a>
                             </div>
-                        </div>
-                        <div class="panel-footer">
-                            <small></small>
                         </div>
                     </div>
                 </div>
