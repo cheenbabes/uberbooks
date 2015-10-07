@@ -11257,6 +11257,7 @@ canvas {
     text-align: center;
     border-bottom: 0;
     background-color: #0f1013;
+    margin-top: 20px;
 }
 
 @media (min-width: 768px) {
