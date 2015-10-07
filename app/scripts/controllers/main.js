@@ -88,10 +88,14 @@ angular.module('uberbooksApp')
                 convexHull.addPoint(item.lon, item.lat);
             });
 
-            var hullPoints = convexHull.getHull();
-            var googlePolygonPoints = hullPoints.map(function (item) {
+            $scope.pageHullPoints = convexHull.getHull();
+            var googlePolygonPoints = $scope.pageHullPoints.map(function (item) {
                 return new google.maps.LatLng(item.y, item.x);
             });
+
+            $scope.pageHullPoints = $scope.pageHullPoints.map(function (item) {
+                return [item.y, item.x];
+            })
 
             var polygon = new google.maps.Polygon({
                 paths: googlePolygonPoints
@@ -146,6 +150,15 @@ angular.module('uberbooksApp')
                         }
                     }
                     $scope.devoteeCount = uniqueDevotees.length;
+
+                    $scope.xvariable = x;
+
+                    if (x.length == 0) {
+                        $scope.totalMapArea = 0
+                    } else {
+                        $scope.totalMapArea = calculatePolygonArea(x);
+                    }
+
 
                 }).catch(function (error) {
                     console.log("Error: ", error);

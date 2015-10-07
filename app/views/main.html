@@ -23,7 +23,7 @@
 </div>
 
 <div class="row statcards">
-    <div class="col-sm-4 m-b">
+    <div class="col-xs-6 col-sm-4 m-b">
         <div class="statcard statcard-success">
             <div class="p-a">
                 <span class="statcard-desc">Lakshmi</span>
@@ -33,7 +33,7 @@
             <canvas id="sparkline1" width="189" height="47" class="sparkline" data-chart="spark-line" data-value="[{data:[28,68,41,43,96,45,100]}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
         </div>
     </div>
-    <div class="col-sm-4 m-b">
+    <div class="col-xs-6 col-sm-4 m-b">
         <div class="statcard statcard-danger">
             <div class="p-a">
                 <span class="statcard-desc">Books</span>
@@ -43,7 +43,7 @@
             <canvas id="sparkline1" width="189" height="47" class="sparkline" data-chart="spark-line" data-value="[{data:[28,68,41,43,96,45,100]}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
         </div>
     </div>
-    <div class="col-sm-4 m-b">
+    <div class="col-xs-12 col-sm-4 m-b">
         <div class="row">
             <div class="col-sm-12 m-b">
                 <div class="statcard statcard-info">
@@ -58,7 +58,7 @@
                 <div class="statcard statcard-warning">
                     <div class="p-a">
                         <span class="statcard-desc">Total Map Area</span>
-                        <h2 class="statcard-number">{{devoteeCount}}</h2>
+                        <h2 class="statcard-number">{{totalMapArea / 2589988.11 | number: 3}} miles<sup>2</sup></h2>
                     </div>
 
                 </div>
@@ -73,31 +73,6 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h4 class="panel-title text-center"> Latest scores </h4>
-            </div>
-            <div class="panel-body">
-                <input type="text" class="form-control" placeholder="Search Scores..." ng-model="search">
-            </div>
-
-            <div class="list-group">
-                <div dir-paginate="score in scores | reverse | filter: search | itemsPerPage: 15">
-                    <a class="list-group-item" ng-href="#/score/{{score.$id}}">
-                        <span class="pull-right text-muted">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span> | <strong>${{score.money}}</strong>
-                        </span>{{score.user}}
-                    </a>
-                </div>
-            </div>
-            <div class="panel-footer" style="background:#1ca8dd">
-                <div class="text-center">
-                    <dir-pagination-controls></dir-pagination-controls>
-                </div>
-            </div>
-        </div>
-
-    </div>
     <div class="col-md-6">
         <div class="row">
             <div class="col-md-12">
@@ -159,9 +134,42 @@
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title text-center"> Latest scores </h4>
+            </div>
+            <div class="panel-body">
+                <input type="text" class="form-control" placeholder="Search Scores..." ng-model="search">
+            </div>
+
+            <div class="list-group">
+                <div dir-paginate="score in scores | reverse | filter: search | itemsPerPage: 15">
+                    <a class="list-group-item" ng-href="#/score/{{score.$id}}">
+                        <span class="pull-right text-muted">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span> | <strong>${{score.money}}</strong>
+                        </span>{{score.user}}
+                    </a>
+                </div>
+            </div>
+            <div class="panel-footer" style="background:#1ca8dd">
+                <div class="text-center">
+                    <dir-pagination-controls></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 </div>
 
+total area: {{totalMapArea}}
+<br>
+<pre>x variable : {{xvariable | json }}</pre>
 
+<map center="39.108500, -98.544734" zoom="5" styles="{{style}}" style="height: 700px;">
+    <shape id="polygon" name="polygon" paths="{{pageHullPoints}}" stroke-color="#000" stroke-opacity="0.8" stroke-weight="2" fill-color="#000" fill-opacity="0.35"></shape>
+    <marker ng-repeat="score in oneWeekScores" position="{{score.lat}}, {{score.lon}}" on-click="showInfoWindow(event, score)"></marker>
+</map>
 <!--Rankings: <pre>{{rankings | json}}</pre>Sort results: <pre>{{result | json}}</pre> RankingScores: <pre>{{rankingScores | json}}</pre>-->
 <!--Time scores: <pre>{{timescores | json}}</pre> All scores: <pre>{{scores | json}}</pre> -->
