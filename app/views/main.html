@@ -5,11 +5,13 @@
     </div>
 
     <div class="dashhead-toolbar">
-        <div class="input-with-icon dashhead-toolbar-item">
-            <input type="text" value="{{date | date: 'MMM dd, yyyy'  }}" class="form-control" data-provide="datepicker">
-            <span class="icon icon-calendar"></span>
-        </div>
+        <!--
+<div class="input-with-icon dashhead-toolbar-item">
+    <input type="text" value="{{date | date: 'MMM dd, yyyy'  }}" class="form-control" data-provide="datepicker">
+    <span class="icon icon-calendar"></span>
+</div>
         <span class="dashhead-toolbar-divider hidden-xs"></span>
+-->
         <div class="btn-group dashhead-toolbar-item btn-group-thirds">
             <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(86400000, '24 hour')" ng-class="{ 'active' : statisticTime == '24 hour'}">24 Hours</button>
             <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(259200000, '3 day')" ng-class="{ 'active' : statisticTime == '3 day'}">3 Days</button>
@@ -58,7 +60,7 @@
                 <div class="statcard statcard-warning">
                     <div class="p-a">
                         <span class="statcard-desc">Total Map Area</span>
-                        <h2 class="statcard-number">{{totalMapArea / 2589988.11 | number: 3}} miles<sup>2</sup></h2>
+                        <h2 class="statcard-number">{{totalMapArea / 2589988.11 | number: 1}} miles<sup>2</sup></h2>
                     </div>
 
                 </div>
@@ -161,15 +163,13 @@
     </div>
 
 </div>
-</div>
 
-total area: {{totalMapArea}}
-<br>
-<pre>x variable : {{xvariable | json }}</pre>
 
+<!--
 <map center="39.108500, -98.544734" zoom="5" styles="{{style}}" style="height: 700px;">
     <shape id="polygon" name="polygon" paths="{{pageHullPoints}}" stroke-color="#000" stroke-opacity="0.8" stroke-weight="2" fill-color="#000" fill-opacity="0.35"></shape>
-    <marker ng-repeat="score in oneWeekScores" position="{{score.lat}}, {{score.lon}}" on-click="showInfoWindow(event, score)"></marker>
+    <marker ng-repeat="score in timescores" position="{{score.lat}}, {{score.lon}}" on-click="showInfoWindow(event, score)"></marker>
 </map>
+-->
 <!--Rankings: <pre>{{rankings | json}}</pre>Sort results: <pre>{{result | json}}</pre> RankingScores: <pre>{{rankingScores | json}}</pre>-->
 <!--Time scores: <pre>{{timescores | json}}</pre> All scores: <pre>{{scores | json}}</pre> -->

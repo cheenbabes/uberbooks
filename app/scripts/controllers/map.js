@@ -16,7 +16,7 @@ angular.module('uberbooksApp')
                 lon: data.coords.longitude
             };
 
-            $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(50));
+            $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(250));
 
             $scope.icon = {
                 url: 'http://plebeosaur.us/etc/map/bluedot_retina.png',
