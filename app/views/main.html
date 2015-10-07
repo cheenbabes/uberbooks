@@ -11,15 +11,15 @@
         </div>
         <span class="dashhead-toolbar-divider hidden-xs"></span>
         <div class="btn-group dashhead-toolbar-item btn-group-thirds">
-            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(86400000, '24 hours')">24 Hours</button>
-            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(259200000, '3 days')">3 Days</button>
-            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(604800000, '1 week')">Week</button>
+            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(86400000, '24 hour')" ng-class="{ 'active' : statisticTime == '24 hour'}">24 Hours</button>
+            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(259200000, '3 day')" ng-class="{ 'active' : statisticTime == '3 day'}">3 Days</button>
+            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(604800000, '1 week')" ng-class="{ 'active' : statisticTime == '1 week'}">Week</button>
         </div>
     </div>
 </div>
 
 <div class="hr-divider m-t-md m-b">
-    <h3 class="hr-divider-content hr-divider-heading">Quick Stats</h3>
+    <h3 class="hr-divider-content hr-divider-heading">{{statisticTime}} Quick Stats</h3>
 </div>
 
 <div class="row statcards">

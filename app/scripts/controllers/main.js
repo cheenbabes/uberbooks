@@ -106,7 +106,7 @@ angular.module('uberbooksApp')
 
         //default stat values
         $scope.statsTimeLength = 86400000;
-        $scope.statisticTime = '24 hours';
+        $scope.statisticTime = '24 hour';
         //call the function to update the stats
         calculateStatsBasedOnQuery();
 
