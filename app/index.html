@@ -146,7 +146,13 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuEpwI2jmGtme1AhX9s0qSYSgNdXDZ9a0&libraries=geometry"></script>
 
     <script>
-        $(document).trigger('redraw.bs.charts')
+        window.addEventListener("load", function () {
+            setTimeout(triggerCharts, 400);
+        }, false);
+
+        function triggerCharts() {
+            $(document).trigger('redraw.bs.charts');
+        }
     </script>
 
 </body>
