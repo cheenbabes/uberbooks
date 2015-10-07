@@ -120,6 +120,13 @@ angular.module('uberbooksApp')
             $scope.statsTimeLength = time;
             $scope.statisticTime = description;
             calculateStatsBasedOnQuery();
+            window.addEventListener("load", function () {
+                setTimeout(triggerCharts, 400);
+            }, false);
+
+            function triggerCharts() {
+                $(document).trigger('redraw.bs.charts');
+            }
         }
 
         //function to calculate stats based on parameters
@@ -133,7 +140,6 @@ angular.module('uberbooksApp')
             query.on('value', function (snapshot) {
                 //                console.log(snapshot.val());
                 $scope.timescores = $firebaseArray(query);
-
 
                 $scope.timescores.$loaded().then(function (x) {
                     $scope.totalMoney = x.reduce(function (i, score) {
@@ -158,6 +164,18 @@ angular.module('uberbooksApp')
                     } else {
                         $scope.totalMapArea = calculatePolygonArea(x);
                     }
+
+                    $scope.onlyMoneyValues = x.map(function (item) {
+                        return item.money;
+                    })
+
+                    $scope.moneyData = [
+                        {
+                            data: $scope.onlyMoneyValues
+                    }
+                    ];
+                    $scope.moneyDataLabels = new Array($scope.moneyData[0].data.length);
+
 
 
                 }).catch(function (error) {

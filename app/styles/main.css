@@ -1,5 +1,6 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /*This is Mathura vasa dasa */
+
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -9196,7 +9197,7 @@ body {
 }
 
 .m-b {
-    margin-bottom: 20px !important;
+    margin-bottom: 17px !important;
 }
 
 .m-l {
@@ -11815,7 +11816,7 @@ fieldset[disabled] .btn-danger-outline.active {
     box-shadow: none;
 }
 
-body .panel-footer{
+body .panel-footer {
     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.5;
