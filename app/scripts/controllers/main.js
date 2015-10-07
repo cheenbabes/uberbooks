@@ -9,6 +9,11 @@
  */
 angular.module('uberbooksApp')
     .controller('MainCtrl', ['$scope', 'geolocation', '$firebaseArray', 'Ref', 'FBURL', 'Flash', '$firebaseObject', function ($scope, geolocation, $firebaseArray, Ref, FBURL, Flash, $firebaseObject) {
+        //calendar dates
+        //FUTURE IMPL to sort by user input dates
+        $scope.date = new Date();
+
+
         //scores used for rankings. These will be for the last week.
         var currentTime = (new Date).getTime() + 150000;
         var oneWeekPrevious = currentTime - 604800000; //one week, 168 hours

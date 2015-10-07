@@ -6,7 +6,7 @@
 
     <div class="dashhead-toolbar">
         <div class="input-with-icon dashhead-toolbar-item">
-            <input type="text" value="TODO-SELECTED DATE RANGE" class="form-control" data-provide="datepicker">
+            <input type="text" value="{{date | date: 'MMM dd, yyyy'  }}" class="form-control" data-provide="datepicker">
             <span class="icon icon-calendar"></span>
         </div>
         <span class="dashhead-toolbar-divider hidden-xs"></span>
@@ -136,11 +136,10 @@
                         <div class="list-group">
                             <div ng-repeat="rank in rankings | filter: searchBooks | limitTo:5 | orderBy: '-books'">
                                 <a class="list-group-item" ng-href="#/user/{{rank.id}}">
-
                                     <span class="pull-right text-muted">{{rank.books}} books</span> {{rank.name}}
-
+                                </a>
                             </div>
-                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -149,6 +148,7 @@
     </div>
 </div>
 </div>
+
 
 <!--Rankings: <pre>{{rankings | json}}</pre>Sort results: <pre>{{result | json}}</pre> RankingScores: <pre>{{rankingScores | json}}</pre>-->
 <!--Time scores: <pre>{{timescores | json}}</pre> All scores: <pre>{{scores | json}}</pre> -->
