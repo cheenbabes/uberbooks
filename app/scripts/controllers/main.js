@@ -28,7 +28,7 @@ angular.module('uberbooksApp')
                 $scope.result = groupBy($scope.rankingScores, function (arrayItem) {
                     return [arrayItem.userid];
                 });
-
+                var scoreArray = [];
                 for (var j = 0; j < $scope.result.length; j++) {
                     //all the records for a particular person have the same userid, so get the first one.  
                     //This would be something like "simplelogin:10"
@@ -46,6 +46,7 @@ angular.module('uberbooksApp')
                         mapArea: calculatePolygonArea($scope.result[j])
                     }
                     console.log(user);
+                    scoreArray.push(user);
                     Ref.child('rankings').child(uid).once('value', function (snapshot) {
                         //if data exists
                         if (snapshot.exists()) {
@@ -58,6 +59,7 @@ angular.module('uberbooksApp')
 
                     });
                 }
+                $scope.scoreArray = scoreArray;
             }).catch(function (error) {
                 $scope.error = error;
             });
