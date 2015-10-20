@@ -32,8 +32,6 @@
             </div>
         </div>
 
-        Ranking: <pre>{{ranking | json}}</pre>
-
     </div>
 
     <div class="col-md-6">
@@ -51,12 +49,13 @@
                         <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="list-group-item-text">{{score.timestamp | date: 'MMM dd, yyyy H:mm a'}}</p>
+                                    <div class="list-group-item-text"><span class="pull-left">{{score.timestamp | date: 'MMM dd, yyyy H:mm a'}}</span>
+                                    </div>
 
                                 </div>
                                 <div class="col-sm-6">
-                                    <h4 class="list-group-item-heading pull-right">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></h4>
-                                    <h4 class="list-group-item-heading">${{score.money}}</h4>
+                                    <span class="list-group-item-heading pull-right">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></span>
+                                    <span class="list-group-item-heading">${{score.money}}</span>
                                 </div>
                             </div>
                         </a>
