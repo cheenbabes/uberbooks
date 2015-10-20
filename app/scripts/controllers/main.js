@@ -28,27 +28,32 @@ angular.module('uberbooksApp')
                 $scope.result = groupBy($scope.rankingScores, function (arrayItem) {
                     return [arrayItem.userid];
                 });
-
+                var scoreArray = [];
                 for (var j = 0; j < $scope.result.length; j++) {
                     //all the records for a particular person have the same userid, so get the first one.  
                     //This would be something like "simplelogin:10"
                     var uid = $scope.result[j][0].userid;
                     var name = $scope.result[j][($scope.result[j].length - 1)].user;
                     var user = {
-                        name: name,
-                        id: uid,
-                        money: $scope.result[j].reduce(function (i, score) {
-                            return i + parseInt(score.money);
-                        }, 0),
-                        books: $scope.result[j].reduce(function (i, score) {
-                            return i + parseInt(score.books);
-                        }, 0),
-                        mapArea: calculatePolygonArea($scope.result[j])
-                    }
-                    console.log(user);
+                            name: name,
+                            id: uid,
+                            money: $scope.result[j].reduce(function (i, score) {
+                                return i + parseInt(score.money);
+                            }, 0),
+                            books: $scope.result[j].reduce(function (i, score) {
+                                return i + parseInt(score.books);
+                            }, 0),
+                            mapArea: calculatePolygonArea($scope.result[j]),
+                            timestamp: Firebase.ServerValue.TIMESTAMP
+                        }
+                        //                    console.log(user);
+                    scoreArray.push(user);
                     Ref.child('rankings').child(uid).once('value', function (snapshot) {
                         //if data exists
                         if (snapshot.exists()) {
+                            if (snapshot.val().money > user.money || snapshot.val().books > user.books) {
+                                console.log("Higher value encountered, not writing to Firebase");
+                            }
                             snapshot.ref().update(user);
                         } else {
                             var payload = {};
@@ -58,6 +63,7 @@ angular.module('uberbooksApp')
 
                     });
                 }
+                $scope.scoreArray = scoreArray;
             }).catch(function (error) {
                 $scope.error = error;
             });
@@ -123,10 +129,6 @@ angular.module('uberbooksApp')
             window.addEventListener("load", function () {
                 setTimeout(triggerCharts, 400);
             }, false);
-
-            function triggerCharts() {
-                $(document).trigger('redraw.bs.charts');
-            }
         }
 
         //function to calculate stats based on parameters

@@ -1,15 +1,15 @@
-<map center="39.108500, -98.544734" zoom="5" styles="{{style}}" style="height: 700px;">
+<map center="39.108500, -98.544734" zoom="5" styles="{{style}}" style="height: 355px;">
     <shape id="polygon" name="polygon" paths="{{pageHullPoints}}" stroke-color="#000" stroke-opacity="0.8" stroke-weight="2" fill-color="#000" fill-opacity="0.35"></shape>
     <marker ng-repeat="score in oneWeekScores" position="{{score.lat}}, {{score.lon}}" on-click="showInfoWindow(event, score)"></marker>
 </map>
-
+<small>The polygon above shows the total area over the past 60 days. Total area: {{polygonArea / 2589988.11 | number: 3}} miles<sup>2</sup></small>
 <hr>
 
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
-                <h3 class="panel-title pull-left">Rankings & Scores</h3>
+                <h3 class="panel-title text-center">Historical Scores</h3>
             </div>
             <div class="list-group">
                 <div class="list-group-item">
@@ -19,13 +19,16 @@
                     <span class="pull-right">${{ranking.money}}</span>Lakshmi
                 </div>
                 <div class="list-group-item">
-                    <span class="pull-right">{{ranking.books}} <span>{{score.books == 1? 'book' : 'books'}}</span></span>Books distributed </div>
+                    <span class="pull-right">{{ranking.books}} <span>{{ranking.books == 1 ? 'book' : 'books'}}</span></span>Books distributed </div>
                 <div class="list-group-item">
                     <span class="pull-right">{{ranking.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup></span> Map Area
                 </div>
+                <div class="list-group-item">
+                    <span class="pull-right">{{ranking.timestamp |date: 'MMM dd, yyyy H:mm a '}}</span> Week Ending On
+                </div>
             </div>
             <div class="panel-footer">
-                <small>Aggregate calculations are based on the scores from the <b>last seven days ONLY!</b></small>
+                <small>This is a historical calculation. The numbers above show the <b>highest one week score period</b>. For the current 7 days, please see the front page rankings.</small>
             </div>
         </div>
 
@@ -46,12 +49,13 @@
                         <a class="list-group-item" ng-href="#/score/{{score.$id}}">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="list-group-item-text">{{score.timestamp | date: 'MMM dd, yyyy H:mm a'}}</p>
+                                    <div class="list-group-item-text"><span class="pull-left">{{score.timestamp | date: 'MMM dd, yyyy H:mm a'}}</span>
+                                    </div>
 
                                 </div>
                                 <div class="col-sm-6">
-                                    <h4 class="list-group-item-heading pull-right">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></h4>
-                                    <h4 class="list-group-item-heading">${{score.money}}</h4>
+                                    <span class="list-group-item-heading pull-right">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span></span>
+                                    <span class="list-group-item-heading">${{score.money}}</span>
                                 </div>
                             </div>
                         </a>
@@ -59,7 +63,7 @@
                 </div>
                 <div class="panel-footer">
                     <div class="text-center">
-                        <dir-pagination-controls auto-hide="false" boundary-links="true" direction-links="true">
+                        <dir-pagination-controls auto-hide="true" boundary-links="true" direction-links="true">
                         </dir-pagination-controls>
                     </div>
 
