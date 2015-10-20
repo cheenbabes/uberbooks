@@ -9,7 +9,7 @@
     <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
-                <h3 class="panel-title pull-left">Rankings & Scores</h3>
+                <h3 class="panel-title text-center">Rankings & Scores</h3>
             </div>
             <div class="list-group">
                 <div class="list-group-item">
@@ -23,11 +23,16 @@
                 <div class="list-group-item">
                     <span class="pull-right">{{ranking.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup></span> Map Area
                 </div>
+                <div class="list-group-item">
+                    <span class="pull-right">{{ranking.timestamp |date: 'MMM dd, yyyy H:mm a '}}</span> Week Ending On
+                </div>
             </div>
             <div class="panel-footer">
-                <small>Aggregate calculations are based on the scores from the <b>last seven days ONLY!</b></small>
+                <small>This is a historical calculation. The numbers above show the <b>highest one week score period</b>. For the current 7 days, please see the front page rankings.</small>
             </div>
         </div>
+
+        Ranking: <pre>{{ranking | json}}</pre>
 
     </div>
 
@@ -59,7 +64,7 @@
                 </div>
                 <div class="panel-footer">
                     <div class="text-center">
-                        <dir-pagination-controls auto-hide="false" boundary-links="true" direction-links="true">
+                        <dir-pagination-controls auto-hide="true" boundary-links="true" direction-links="true">
                         </dir-pagination-controls>
                     </div>
 
