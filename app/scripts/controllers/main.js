@@ -43,7 +43,8 @@ angular.module('uberbooksApp')
                         books: $scope.result[j].reduce(function (i, score) {
                             return i + parseInt(score.books);
                         }, 0),
-                        mapArea: calculatePolygonArea($scope.result[j])
+                        mapArea: calculatePolygonArea($scope.result[j]),
+                        timestamp: Firebase.ServerValue.TIMESTAMP
                     }
                     console.log(user);
                     scoreArray.push(user);
@@ -125,10 +126,6 @@ angular.module('uberbooksApp')
             window.addEventListener("load", function () {
                 setTimeout(triggerCharts, 400);
             }, false);
-
-            function triggerCharts() {
-                $(document).trigger('redraw.bs.charts');
-            }
         }
 
         //function to calculate stats based on parameters
