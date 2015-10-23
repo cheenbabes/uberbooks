@@ -9,14 +9,14 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
     <link rel="stylesheet" href="bower_components/angular-flash-alert/dist/angular-flash.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
+
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
 </head>
 
 <body ng-app="uberbooksApp">
@@ -98,8 +98,6 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/Chart.js/Chart.js"></script>
-    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-flash-alert/dist/angular-flash.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
@@ -108,7 +106,6 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
     <script src="bower_components/angularjs-geolocation/src/geolocation.js"></script>
@@ -117,6 +114,7 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="bower_components/tg-angular-validator/dist/angular-validator.js"></script>
+    <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -139,6 +137,9 @@
     <script src="scripts/controllers/map.js"></script>
     <script src="scripts/controllers/user.js"></script>
     <script src="scripts/libraries/graham-scan.min.js"></script>
+    <script src="scripts/libraries/chart.js"></script>
+    <script src="scripts/libraries/datepicker.js"></script>
+    <script src="scripts/libraries/tablesorter.min.js"></script>
     <script src="scripts/libraries/toolkit.js"></script>
 
 
@@ -146,6 +147,16 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuEpwI2jmGtme1AhX9s0qSYSgNdXDZ9a0&libraries=geometry"></script>
 
+
+    <script>
+        window.addEventListener("load", function () {
+            setTimeout(triggerCharts, 400);
+        }, false);
+
+        function triggerCharts() {
+            $(document).trigger('redraw.bs.charts');
+        }
+    </script>
 
 
 </body>
