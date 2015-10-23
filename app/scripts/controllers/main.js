@@ -51,10 +51,10 @@ angular.module('uberbooksApp')
                     Ref.child('rankings').child(uid).once('value', function (snapshot) {
                         //if data exists
                         if (snapshot.exists()) {
-                            if (snapshot.val().money > user.money && snapshot.val().books > user.books) {
-                                console.log("Higher value encountered, not writing to Firebase");
-                            } else {
+                            if (user.books > snapshot.val().books && user.money > snapshot.val().money) {
                                 snapshot.ref().update(user);
+                            } else {
+                                console.log("Higher value encountered, not writing to Firebase");
                             }
 
                         } else {
