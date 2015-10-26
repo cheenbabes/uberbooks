@@ -36,6 +36,7 @@ angular.module('uberbooksApp')
                 infoWindow.open($scope.map);
 
             };
+            Flash.create('success', "Displaying the last 250 scores");
         }).catch(function (error) {
             console.log(error);
             Flash.create('danger', "You have rejected geolocation services. You will not be able to see the map unless you enable your browser geolocation! Please check <a href='https://waziggle.com/BrowserAllow.aspx'>here</a> on how to enable it.");

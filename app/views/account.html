@@ -9,6 +9,11 @@
                         <i class="icon icon-forward"></i> Log Out
                     </a>
                 </div>
+                <div class="btn-group pull-right">
+                    <a href="#/user/{{user.uid}}" class="text-info">
+                        <i class="icon icon-pie-chart"></i> Statistics
+                    </a>&nbsp;&nbsp;&nbsp;
+                </div>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
@@ -81,3 +86,6 @@
         </div>
     </div>
 </div>
+
+
+<pre>{{user | json}}</pre>

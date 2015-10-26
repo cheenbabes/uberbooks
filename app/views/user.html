@@ -1,4 +1,4 @@
-<map center="39.108500, -98.544734" zoom="5" styles="{{style}}" style="height: 700px;">
+<map center="39.108500, -98.544734" zoom="5" styles="{{style}}" style="height: 355px;">
     <shape id="polygon" name="polygon" paths="{{pageHullPoints}}" stroke-color="#000" stroke-opacity="0.8" stroke-weight="2" fill-color="#000" fill-opacity="0.35"></shape>
     <marker ng-repeat="score in oneWeekScores" position="{{score.lat}}, {{score.lon}}" on-click="showInfoWindow(event, score)"></marker>
 </map>
@@ -9,7 +9,7 @@
     <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
-                <h3 class="panel-title pull-left">Rankings & Scores</h3>
+                <h3 class="panel-title text-center">Rankings & Scores</h3>
             </div>
             <div class="list-group">
                 <div class="list-group-item">
@@ -19,13 +19,15 @@
                     <span class="pull-right">${{ranking.money}}</span>Lakshmi
                 </div>
                 <div class="list-group-item">
-                    <span class="pull-right">{{ranking.books}} <span>{{score.books == 1? 'book' : 'books'}}</span></span>Books distributed </div>
+                    <span class="pull-right">{{ranking.books}} <span>{{ranking.books == 1? 'book' : 'books'}}</span></span>Books distributed </div>
                 <div class="list-group-item">
                     <span class="pull-right">{{ranking.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup></span> Map Area
                 </div>
+                <div class="list-group-item"><span class="pull-right">{{ranking.timestamp | date: 'MMM dd, yyyy H:mm a'}}</span> Week Ending On
+                </div>
             </div>
             <div class="panel-footer">
-                <small>Aggregate calculations are based on the scores from the <b>last seven days ONLY!</b></small>
+                <small>This is a historical calculation. The numbers above show the <b>highest one week score period</b>. For the current 7 day scores, please see the front page.</small>
             </div>
         </div>
 
