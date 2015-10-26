@@ -174,16 +174,76 @@ angular.module('uberbooksApp')
                     }
 
                     $scope.onlyMoneyValues = x.map(function (item) {
-                        return item.money;
+                        return parseFloat(item.money);
                     })
 
-                    $scope.moneyData = [
-                        {
-                            data: $scope.onlyMoneyValues
-                    }
-                    ];
-                    $scope.moneyDataLabels = new Array($scope.moneyData[0].data.length);
+                    $scope.onlyBookValues = x.map(function (item) {
+                        return parseFloat(item.books);
+                    })
 
+                    var labels = [];
+                    for (var k = 0; k < x.length; k++) {
+                        labels.push(0);
+                    }
+
+                    var moneyChartData = {
+                        labels: labels,
+                        datasets: [
+                            {
+                                fillColor: 'rgba(255,255,255,0.3)',
+                                strokeColor: '#fff',
+                                pointStrokeColor: '#fff',
+                                data: $scope.onlyMoneyValues
+                            }
+                        ]
+                    }
+
+                    var bookChartData = {
+                        labels: labels,
+                        datasets: [
+                            {
+                                fillColor: 'rgba(255,255,255,0.3)',
+                                strokeColor: '#fff',
+                                pointStrokeColor: '#fff',
+                                data: $scope.onlyBookValues
+                            }
+                        ]
+                    }
+
+                    var moneyOptions = {
+                        animation: true,
+                        responsive: true,
+                        bezierCurve: true,
+                        bezierCurveTension: 0.25,
+                        showScale: false,
+                        scaleOverride: true,
+                        scaleSteps: 10,
+                        scaleStepWidth: 5,
+                        scaleStartValue: 0,
+                        pointDotRadius: 0,
+                        pointDotStrokeWidth: 0,
+                        pointDot: false,
+                        showTooltips: false
+                    }
+
+                    var bookOptions = {
+                        animation: true,
+                        responsive: true,
+                        bezierCurve: true,
+                        bezierCurveTension: 0.25,
+                        showScale: false,
+                        scaleOverride: true,
+                        scaleSteps: 10,
+                        scaleStepWidth: 1,
+                        scaleStartValue: 0,
+                        pointDotRadius: 0,
+                        pointDotStrokeWidth: 0,
+                        pointDot: false,
+                        showTooltips: false
+                    }
+
+                    new Chart(document.getElementById('moneyChart').getContext('2d')).Line(moneyChartData, moneyOptions);
+                    new Chart(document.getElementById('booksChart').getContext('2d')).Line(bookChartData, bookOptions);
 
 
                 }).catch(function (error) {
