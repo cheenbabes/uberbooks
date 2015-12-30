@@ -30,8 +30,8 @@ angular.module('uberbooksApp')
                 var infoWindow = new google.maps.InfoWindow();
                 var center = new google.maps.LatLng(score.lat, score.lon);
 
-                infoWindow.setContent('<h4>Summary</h4><p>Money: $' + score.money + '</p><p>Books: ' + score.books + '</p><p>Distributed by ' +
-                    score.user + '</p><p>' + new Date(score.timestamp).toString() + '</p>');
+                infoWindow.setContent('<h4 style="color:#000">Summary</h4><div style="color:#000"><p>Money: $' + score.money + '</p><p>Books: ' + score.books + '</p><p>Distributed by ' +
+                    score.user + '</p><p>' + new Date(score.timestamp).toString() + '</p></div>');
                 infoWindow.setPosition(center);
                 infoWindow.open($scope.map);
 

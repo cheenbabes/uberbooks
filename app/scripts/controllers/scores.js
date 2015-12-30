@@ -36,7 +36,7 @@ angular.module('uberbooksApp')
                 if (floatMoney < 0.50 || floatMoney > 300) {
                     moneyError = true;
                 }
-                if (isNaN(intBooks) || intBooks < 1 || intBooks > 25) {
+                if (isNaN(intBooks) || intBooks < 1 || intBooks > 100) {
                     bookError = true;
                 }
                 if (moneyError) {
