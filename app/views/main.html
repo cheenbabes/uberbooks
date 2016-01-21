@@ -15,16 +15,29 @@
         <div class="dashhead-toolbar-item">
             <a type="button" class="btn btn-success" href="/#/scores">Submit Score</a>
         </div>
-            <span class="dashhead-toolbar-divider hidden-xs" style="margin-right:20px; margin-left:20px"></span>
+        <span class="dashhead-toolbar-divider hidden-xs" style="margin-right:20px; margin-left:20px"></span>
 
         <div class="btn-group dashhead-toolbar-item btn-group-thirds">
             <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(86400000, '24 hour')" ng-class="{ 'active' : statisticTime == '24 hour'}">24 Hours</button>
             <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(259200000, '3 day')" ng-class="{ 'active' : statisticTime == '3 day'}">3 Days</button>
             <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(604800000, '1 week')" ng-class="{ 'active' : statisticTime == '1 week'}">1 Week</button>
-            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(2592000000, '1 Month')" ng-class="{ 'active' : statisticTime == '1 month'}">1 Month</button>
-            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(7776000000, '3 Months')" ng-class="{ 'active' : statisticTime == '3 months'}">3 Months</button>
-            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(15552000000, '6 Months')" ng-class="{ 'active' : statisticTime == '6 months'}">6 Months</button>
-            <button type="button" class="btn btn-primary-outline" ng-click="updateStatsLength(31536000000, '1 Year')" ng-class="{ 'active' : statisticTime == '1 year'}">1 Year</button>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary-outline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More <span class="caret"></span>
+            </button>
+            <ul class="dropdown dropdown-menu">
+                <li><a ng-click="updateStatsLength(2592000000, '1 Month')">1 Month</a>
+                </li>
+                <li><a ng-click="updateStatsLength(7776000000, '3 Month')">3 Months</a>
+                </li>
+                <li><a ng-click="updateStatsLength(15552000000, '6 Month')">6 Months</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li><a ng-click="updateStatsLength(31536000000, '1 Year')">1 Year</a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
