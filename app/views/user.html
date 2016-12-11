@@ -47,7 +47,7 @@
 
                 <div class="list-group">
                     <div dir-paginate="score in oneWeekScores | reverse | filter: search |itemsPerPage: 15">
-                        <a class="list-group-item" ng-href="#/score/{{score.$id}}">
+                        <a class="list-group-item" ng-href="/score/{{score.$id}}">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <p class="list-group-item-text">{{score.timestamp | date: 'MMM dd, yyyy H:mm a'}}</p>

@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
+    
+    <base href="/" />
 </head>
+    
 
 <body ng-app="uberbooksApp">
     <!--[if lt IE 7]>
@@ -27,35 +30,35 @@
     <!--    <div class="header" ng-cloak="">-->
 
     <nav class="iconav">
-        <a class="iconav-brand" href="#/">
+        <a class="iconav-brand" href="/">
             <span class="icon icon-book iconav-brand-icon"></span>
         </a>
         <div class="iconav-slider">
             <ul class="nav nav-pills iconav-nav">
                 <li>
-                    <a href="#/" title="Home" data-toggle="tooltip" data-placement="right" data-container="body">
+                    <a href="/" title="Home" data-toggle="tooltip" data-placement="right" data-container="body">
                         <span class="icon icon-home"></span>
                         <small class="iconav-nav-label visible-xs-block">Overview</small>
                     </a>
                 </li>
                 <li>
-                    <a href="#/map" title="Map" data-toggle="tooltip" data-placement="right" data-container="body">
+                    <a href="/map" title="Map" data-toggle="tooltip" data-placement="right" data-container="body">
                         <span class="icon icon-globe"></span>
                         <small class="iconav-nav-label visible-xs-block">Map</small>
                     </a>
                 </li>
                 <li>
-                    <a ng-show-auth="" href="#/scores" title="Submit Scores" data-toggle="tooltip" data-placement="right" data-container="body">
+                    <a ng-show-auth="" href="/scores" title="Submit Scores" data-toggle="tooltip" data-placement="right" data-container="body">
                         <span class="icon icon-area-graph"></span>
                         <small class="iconav-nav-label visible-xs-block">Submit Scores</small>
                     </a>
                 </li>
                 <li>
-                    <a ng-show-auth="" href="#/account" title="Account" data-toggle="tooltip" data-placement="right" data-container="body">
+                    <a ng-show-auth="" href="/account" title="Account" data-toggle="tooltip" data-placement="right" data-container="body">
                         <span class="icon icon-user"></span>
                         <small class="iconav-nav-label visible-xs-block">Account</small>
                     </a>
-                    <a ng-hide-auth="" href="#/login" title="Log in" data-toggle="tooltip" data-placement="right" data-container="body">
+                    <a ng-hide-auth="" href="/login" title="Log in" data-toggle="tooltip" data-placement="right" data-container="body">
                         <span class="icon icon-add-user"></span>
                         <small class="iconav-nav-label visible-xs-block">Log in</small>
                     </a>
@@ -94,14 +97,18 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <!--<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>-->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-flash-alert/dist/angular-flash.js"></script>
+    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/markerclustererplus/src/markerclusterer.js"></script>
+    <script src="bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
+    <script src="bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
+    <script src="bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
+    <script src="bower_components/js-rich-marker/src/richmarker.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
@@ -113,6 +120,7 @@
     <script src="bower_components/angularjs-geolocation/src/geolocation.js"></script>
     <script src="bower_components/ngGeolocation/ngGeolocation.js"></script>
     <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="bower_components/tg-angular-validator/dist/angular-validator.js"></script>
     <!-- endbower -->

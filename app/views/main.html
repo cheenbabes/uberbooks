@@ -13,7 +13,7 @@
         <span class="dashhead-toolbar-divider hidden-xs"></span>
 -->
         <div class="dashhead-toolbar-item">
-            <a type="button" class="btn btn-success" href="/#/scores">Submit Score</a>
+            <a type="button" class="btn btn-success" href="/scores">Submit Score</a>
         </div>
         <span class="dashhead-toolbar-divider hidden-xs" style="margin-right:20px; margin-left:20px"></span>
 
@@ -111,7 +111,7 @@
                     </div>
                     <div class="list-group">
                         <div ng-repeat="rank in scoreArray|filter: searchMoney|limitTo:5|orderBy: '-money'">
-                            <a class="list-group-item" href="#/user/{{rank.id}}">
+                            <a class="list-group-item" href="/user/{{rank.id}}">
                                 <span class="pull-right text-muted">${{rank.money}}</span> {{rank.name}}
                             </a>
                         </div>
@@ -129,7 +129,7 @@
                         </div>
                         <div class="list-group">
                             <div ng-repeat="rank in scoreArray|filter: searchMap|limitTo:5|orderBy: '-mapArea'">
-                                <a class="list-group-item" href="#/user/{{rank.id}}">
+                                <a class="list-group-item" href="/user/{{rank.id}}">
                                     <span class="pull-right text-muted">{{rank.mapArea / 2589988.11 | number: 3}} miles<sup>2</sup></span> {{rank.name}}
                                 </a>
                             </div>
@@ -149,7 +149,7 @@
                         </div>
                         <div class="list-group">
                             <div ng-repeat="rank in scoreArray | filter: searchBooks | limitTo:5 | orderBy: '-books'">
-                                <a class="list-group-item" ng-href="#/user/{{rank.id}}">
+                                <a class="list-group-item" ng-href="/user/{{rank.id}}">
                                     <span class="pull-right text-muted">{{rank.books}} books</span> {{rank.name}}
                                 </a>
                             </div>
@@ -171,7 +171,7 @@
 
             <div class="list-group">
                 <div dir-paginate="score in rankingScores | reverse | filter: search | itemsPerPage: 15">
-                    <a class="list-group-item" ng-href="#/score/{{score.$id}}">
+                    <a class="list-group-item" ng-href="/score/{{score.$id}}">
                         <span class="pull-right text-muted">{{score.books}} <span>{{score.books == 1 ? 'book' : 'books'}}</span> | <strong>${{score.money}}</strong>
                         </span>{{score.user}}
                     </a>

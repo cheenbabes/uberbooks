@@ -93,6 +93,8 @@ angular.module('uberbooksApp')
         .otherwise({
             redirectTo: '/'
         });
+    
+//        $locationProvider.html5Mode(true);
   }])
 
 /**
@@ -127,4 +129,8 @@ angular.module('uberbooksApp')
   ])
 
 // used by route security
-.constant('SECURED_ROUTES', {});
+.constant('SECURED_ROUTES', {})
+
+.config(['$locationProvider', function($locationProvider){
+    $locationProvider.html5Mode(true);
+}]);
